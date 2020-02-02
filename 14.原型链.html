@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        1.原型链（）
+        *访问一个对象的属性时：
+            *先在自身属性中查找，找到返回
+            *如果没有，再沿着__proto__这条链向上查找，找到返回
+            *如果最终没找到，返回Undefined
+        *别名：隐式原型链
+        *作用：查找对象的属性（方法），不是找变量的，变量看作用域链。必须是查找对象！！！！！！！！！
+        实例对象才有隐式原型属性
+        var Foo = new Function()
+        var Function = new Function()
+        所有函数的__proto__都是一样的
+        因为他们都是new Function()
+        就像所有new Object()的对象，他们的__proto__都指向Object.prototype
+        var Object=new Function()
+        Object也是Function new出来的  Object.__proto__===Function.prototype //true
+       
+      
+        fn.constructor === Function
+        function fn.__proto__===Function.prototype
+        function Function().__proto__==Function.prototype //true
+        2.构造函数
+
+fn.__proto__.constructor===Function.prototype.constructor
+fn.constructor===Function
+
+    1.我们定义的函数的显示原型指向的对象：默认是空Object实例对象  console.log(Fn.prototype instanceof Object) true
+        特例：Object不满足，它的原型对象不是Object的实例 
+        console.log(Object.prototype instanceof Object)  false
+        console.log(Function.Prototype instanceof Object) //true
+
+    2.所有函数都是Function的实例（包括Function   没有例外）
+        Function.prototype====Function.__proto__ //true
+        Object的原型对象是原型链的尽头
+        Object.prototype.__proto__   //null
+    -->
+
+    <script>
+    function Fn(){
+        this.test1 = function (){
+            console.log('test()')
+        }
+    }
+
+    Fn.prototype.test2=function(){
+        console.log('test2()')
+    }
+
+    var fn = new Fn()
+    fn.test1();//fn是对象名  test1是属性值且属性值是个函数才能执行
+    fn.test2()
+    console.log(fn.toString())
+    fn.test3()
+    
+    </script>
+    
+</body>
+</html>

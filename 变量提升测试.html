@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        1.代码分类（位置）
+            全局代码
+            函数（局部）代码
+        2.全局执行上下文
+            在执行全局代码前将window确定为全局执行上下文
+            对全局数据进行预处理
+                var定义的全局变量==》undefined,添加为window的属性
+                function声明的全局函数==》赋值（fun),添加为window的方法
+                this==>赋值（window)
+            开始执行全局代码
+        3.函数执行上下文
+            在调用函数，准备执行函数体之前，创建对应的函数执行上下文对象（并不是完全真实存在的，用完就消失，是个封闭独有的区域，函数外看不见）
+            堆局部数据进行预处理
+                形参变量==》赋值（实参）==》添加为执行上下文的属性
+                arguments===>赋值（实参列表），添加为执行上下文属性
+                var定义的局部变量==》undefined,添加为执行上下文的属性
+                function声明的函数==>赋值（fun),添加为执行上下文的方法
+                this===>赋值（调用函数的对象）
+            开始执行函数体代码
+
+    -->
+    
+</body>
+<script>
+    //全局执行上下文
+    //首先变量提升，预处理
+    //var a1 ;function a2,this=function 都放到window里  window就是执行上下文
+    //执行a1的时候就去window里找，执行a2也去window里找
+    debugger
+    console.log(a1,window.a1)
+
+    window.a2()
+    console.log(this)
+    var a1=3
+    function a2(){
+        var c=2
+        debugger
+        console.log(fn)
+        
+    }
+    //函数执行上下文
+    function fn(a1){
+        var obj={q:1,w:2,dd:'d4'}
+        debugger
+        var dd="dd"
+        console.log(a1)//2  去执行函数上下文对象里找
+        console.log(a2)//undefined 去执行函数上下文对象里找
+        a3()//a3() 去执行函数上下文对象里找
+        console.log(this)//window 去执行函数上下文对象里找
+        console.log(arguments)//伪数组[2,3] 去执行函数上下文对象里找
+
+        var a2=3
+        function f1(){
+            var fv=55
+        }
+        function a3(){
+            debugger
+            var a4=44
+            console.log(dd)
+            console.log(a1)
+            console.log(a4)
+            console.log(this.w)
+
+            console.log('a3()')
+            f1()
+        }
+        a3.call(fn)
+        a3.call(obj)
+    }
+    fn(2,3)
+
+</script>
+</html>

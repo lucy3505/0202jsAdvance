@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        理解
+            就是一块“地盘”，一个代码段所在的区域
+            它是静态的（相对于上下文对象），在编写代码时就确定了
+        分类
+            全局作用域
+            函数作用域
+            没有块作用域（ES6有了）
+        作用
+            隔离变量，不同作用于下变量不会有冲突
+    作用域与执行上下文区别
+    区别1：
+        1.全局作用域之外，每个函数都会创建自己的作用域，作用域在函数定义时就已经确定了，而不是在函数调用时。
+        2.全局执行上下文环境是在全局作用域确定之后，js代码马上执行之前创建
+        3.函数上下文环境是在调用函数时，函数体代码执行前创建
+    区别2：
+        作用域是静态的，只要函数定义好了就一直存在，且不会再变化
+        执行上下文是动态的，调用函数时创建，函数调用结束时就会自动释放
+    联系
+        执行上下文（对象）是从属于所在的作用域
+        全局上下文环境==》全局作用域
+        函数上下文环境==》对应的函数使用域
+    -->
+    <script>
+        var a = 10,
+            b=20
+        function fn(x){
+            var a = 100
+            var c= 300;
+            console.log('fn()',a,b,c,x)
+            function bar (x){
+                var a =1000
+            }
+        }
+    
+    
+    </script>
+    
+</body>
+</html>

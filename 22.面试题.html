@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        测试题1：
+        1.依次输出什么？
+            gb:undefined
+            fb:1
+            fb:2
+            fb:3
+            fe:3
+            fe:2
+            fe:1
+
+            ge:1
+
+        2.整个过程中产生了几个执行上下文？5
+        测试题2：
+
+
+    -->
+    <script>
+        //测试题1
+        console.log('global begin:' + i )
+        var i = 1
+        foo(1);
+        function foo(i){
+            if(i==4){
+                return
+            }
+            console.log('foo() begin:' + i);
+            foo(i+1);//递归调用：在函数内部调用自己
+            console.log('foo() end:'+i);
+        }
+        console.log('global end:' + i)
+
+
+        //测试题2
+        if(!(b in window)){
+            var b = 1;
+        }
+        console.log(b)//undefined
+
+        /*测试题3*/
+        var c = 1
+        function c(c){
+            console.log(c)
+        }
+        c(2)//报错
+        //var c ;function c
+        // c=1
+        //c(2)  报错
+
+        //测试题4  变量提升和函数提升  谁先执行？
+        //先执行变量提升，再执行函数提升
+        function a(){
+            
+        }
+        var a;
+        console.log(typeof a)//'function'
+    
+    
+    </script>
+</body>
+</html>

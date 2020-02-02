@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        instanceof 左边对象是不是右边的实例
+        1.instanceof是如何判断的
+        *表达式：A instanceof B
+        B走一步，A走多步，B就走B.prototype   A沿着隐式原型链走
+        *如果B函数的显式原型对象在A对象的原项链上，返回true,否则返返回false
+        2.Function是通过new自己产生的实例
+    -->
+    
+</body>
+<script>
+    function Foo(){
+
+    }
+    var f1 = new Foo()
+    console.log(f1 instanceof Foo)//true
+    console.log(f1 instanceof Object)
+
+
+    /*案例2*/
+
+    console.log(Object instanceof Function) //true
+    console.log(Object instanceof Object) //
+    console.log(Function instanceof Function)
+    console.log(Function instanceof Object)
+
+    function Foo(){
+
+    }
+    console.log(Object instanceof Foo )
+</script>
+</html>

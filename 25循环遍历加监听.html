@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>测试1</button>
+    <button>测试2</button>
+    <button>测试3</button>
+
+</body>
+<script>
+    var btns = document.getElementsByTagName('button')
+    length=btns.length;//length在外面写，因为btns是伪数组，每次都会重新去计算这个数组，放外面提高性能
+    for (var i = 0; length=btns.i < length; i++) {
+
+
+        function fn(i) {
+            function fn2(i) {
+                btns[i].onclick = function () {
+                    alert('第' + i + '个')
+                }
+            }
+            return fn2(i)
+        }
+        
+fn(i)
+    }
+    
+
+
+
+</script>
+
+</html>

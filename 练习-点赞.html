@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>icbc:<button id="icbcZan">赞(+0)</button></p>
+    <p>icbc:<button id="icbcCai">踩(+0)</button></p>
+    <p>abc:<button id="abcZan">赞(+0)</button></p>
+    <script>
+       
+        // (function(){
+        //     // debugger
+        //     var n=0
+          
+        //    btnZan.onclick=function(){
+        //        btnZan.innerHTML=`赞(+${n++})`
+        //    }
+        //     return btnZan.onclick()
+        // })()
+    
+    function outer(v){
+        var n=0
+        return function(){
+            this.innerHTML=`${v}(+${++n})`
+        }
+    }
+    icbcZan.onclick=outer('赞')
+    icbcCai.onclick=outer('踩')
+    abcZan.onclick=outer('赞')
+    </script>
+    
+</body>
+</html>

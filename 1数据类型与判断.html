@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据类型</title>
+</head>
+
+<body>
+    <h3>1.分类</h3>
+    <ul>基本(值)类型
+        <li>String:任意字符串</li>
+        <li>Number：任意数字</li>
+        <li>boolean：true/false</li>
+        <li>undefined：undefined</li>
+        <li>null:null</li>
+    </ul>
+    <ul>对象(引用)类型
+        <li>Object:任意对象</li>
+        <li>Function：一种特别的对象（可以执行）</li>
+        <li>Array：一种特别的队形（数值下标，内部数据是有序的）</li>
+    </ul>
+    <h3>2.判断</h3>
+    <li>typeof</li>
+    <p>可以判断undefined/数值/字符串/bool/function</p>
+    <P>不能判断：Null与object ,object和array</P>
+    <li>instanceof</li>
+    <li>===</li>
+    <p>可以判断：undefined/null</p>
+    <script>
+        //1.基本
+        //typeof返回数据类型的字符串表达
+        var a
+        console.log(a,typeof a)//undefined 'undefined'
+        console.log(undefined==='undefined') //false
+        //要判断a是不是undefined  typeof a==='undefined'
+        //别的方式知道a是不是undefined--->a === undefined
+
+        a=4
+        console.log(typeof a==='number')
+        a='fds'
+        console.log(typeof a==='string')
+        a=true
+        console.log(typeof a === 'boolean')
+        a=null
+        console.log(typeof a) //'object'
+        console.log(a===null)
+        //2.对象
+        var b1={
+            b2:[1,'abc',console.log],
+            b3:function(){
+                console.log('b3')
+                return function(){
+                    return 'hkfsd'
+                }
+            }
+        }
+        //instance 实例的意思
+        console.log(b1 instanceof Object)//b1是不是Object构造函数的实力  true
+        console.log(b1 instanceof Array)//false
+        console.log(b1.b2)//'object'
+
+        console.log(b1.b2 instanceof Array,b1.b2 instanceof Object)//true true 
+        console.log(b1.b3 instanceof Function,b1.b3 instanceof Object)//true true 
+        //函数也是对象
+        //判断函数还有一个方式
+        console.log(typeof b1.b3 === 'function')//true
+        console.log(typeof b1.b2[2]==='function') //true
+        b1.b2[2](4)   //看有没有()
+        console.log(b1.b3()())//要看结果，得到的是什么，才知道下一步怎么操作
+        //对象不能执行，不能()，对象是用来存数据的，函数其实也是用来存数据的，不过存的是代码数据
+        //数组存的是有序的数据
+    </script>
+</body>
+<script>
+    var obj={
+    }
+    function test(){
+        var a=3
+    }
+    var arr = [3,'abc']
+    arr[3]
+</script>
+</html>

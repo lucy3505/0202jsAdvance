@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var x=1
+    // function fn(){
+    //     console.log(this.x)
+    // }
+    var obj={
+        x:2,
+        fn(){
+            console.log(this.x)//undefined
+            // console.log(this)//undefined
+            // console.dir(this)//undefined
+            return function(){
+         console.log(obj.fn())
+                //  a++
+                //  console.log(a)
+                 console.log(this)
+             }()
+        }
+    }
+    obj.fn()
+    
+    a=10
+    // function fn(){
+       
+       
+    //     return function(){
+         
+    //         a++
+    //         console.log(a)
+    //         console.log(this)
+    //     }()
+    // }
+    // fn()
+    // fn()
+    // fn()
+    
+    </script>
+</body>
+</html>

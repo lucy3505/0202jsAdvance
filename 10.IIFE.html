@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    1.理解
+        全称：immediately-Invoked Function Expression
+    2.作用
+        1.隐藏实现
+        2.不会污染外部（全局）命名空间 
+        3.用它来编写js模块
+
+    -->
+</body>
+<script>
+    // function (){
+    //     console.log('..')
+    // }//报错，你要嘛取个名字存起来，要嘛执行，这样定义一个没名字的函数没有意义
+
+    (function(){
+        var a=3
+        console.log(a+3)
+    })()
+    //好处是a不会变成全局对象，不会自动释放
+    
+    (function(){
+        var a=1
+        function test(){
+            console.log(++a)
+        }
+        function test(){var b=2}//这个就是完全隐藏的
+        window.$ = function(){ //向外暴露一个全局函数
+            return {
+                test:test
+            }
+        }
+    })()
+    $().test()
+</script>
+</html>

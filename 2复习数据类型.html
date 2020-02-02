@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<ul>问题</ul>
+<li>1.undefined与null区别</li>
+    <p>undefined代表定义了未赋值</p>
+    <p>null代表定义了且赋值了</p>
+<li>2.什么时候给变量赋值null</li>
+null的typeof是object 从类型上是矛盾的  因为null是基本数据类型
+<p>初始赋值，表明将要赋值为对象</p>
+结束前，让对象成为垃圾对象（被垃圾回收器回收）
+
+<li>3.严格区别变量类型与数据类型</li>
+    <p>数据的类型
+        <li>基本类型</li>
+        <li>对象类型</li>
+    </p>
+    <p>变量的类型
+        <li>基本类型：保存就是基本类型的数据</li>
+        <li>对象类型：保存的是地址值</li>
+    </p>
+    
+
+<script>
+
+    var b=null //初始赋值为null，表明将要赋值为对象
+    //确定对象就赋值
+    b=['fds',23]
+    //最后
+    b=null//让b指向的对象成为垃圾对象（被垃圾回收器回收）
+    
+</script>
+
+    <script>
+    //实例：实例对象
+    //类型：类型对象
+    function Person(name,age){ //构造函数  类型
+        this.name=name
+        this.age = age
+    }
+    var p = new Person() //根据类型创建的实例对象
+    //new的时候才能确定Person是构造函数  但是当初设计person是按构造函数来设计的
+    </script>
+</body>
+</html>
