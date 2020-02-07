@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-    //1
-    // function fun(){
-    //     var n=999;
-    //     nAdd = function(){n++;}//没加var,自动在全局创建
-    //     return function(){
-    //         console.log(n)
-    //     }
-    // }
-    // var get = fun();
-    // get();//999
-    // nAdd();
-    // get();//1000
-
-    //2
-    function fn(){
-        var arr = []
-        for(var i =0;i<3;i++){
-            arr[i]=function(){console.log(i)}
+        //1
+        function fun() {
+            var n = 999;
+            nAdd = function () {n++;}//没加var,自动在全局创建
+            return function () {
+                console.log(n)
+            }
         }
-        return arr
-    }
-    var funs = fn()
-    //funs:?
-    funs[0]();//3
-    funs[1]();//3
-    funs[2]();//3
+        // var get = fun();
+        // get();//999
+        // nAdd();
+        // get();//1000
+
+        //2
+        function fn() {
+            var arr = []
+            for (var i = 0; i < 3; i++) {
+                arr[i] = function () {console.log(i)}
+            }
+            return arr
+        }
+        var funs = fn()
+        //funs:?
+        funs[0]();//3
+        funs[1]();//3
+        funs[2]();//3
     </script>
 </body>
+
 </html>
