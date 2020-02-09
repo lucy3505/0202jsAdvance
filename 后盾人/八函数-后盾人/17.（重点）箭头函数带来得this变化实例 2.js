@@ -22,7 +22,7 @@ let Dom={
             console.log(this.site + event.target.innerHTML)
             console.log(self.site + this.innerHTML)
            
-       })//可以理解为下面这个代码
+       })//!可以理解为下面这个代码
        
         // button.onclick=function(){
            //给Button这个对象添加了一个onclick方法,这个function就是对象得属性了，所以使用addEventListener里得function是个方法，而不是函数，里面得this指向得就是Button对象
