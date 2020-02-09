@@ -4,7 +4,7 @@ function User(name){
 }
 console.dir(User)
 console.log(User.prototype.__proto__==Object.prototype)
-//不止可以通过prototype找到构造函数的原型，也可以通过prototype找到构造函数
+//``不止可以通过prototype找到构造函数的原型，也可以通过prototype找到构造函数
 
 console.log(User.prototype.constructor == User)//true
 //其实prototype和__proto__都是原型

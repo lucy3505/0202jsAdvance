@@ -14,7 +14,7 @@
  console.dir(User)//包含prototype和__prototype__两个属性
  /* 
     Object也和User类型
-    ?User.__proto__和User.prototype也是都个对象，这个对象也一定会有父级,那这两个对象的父级是谁呢
+    ?User.__proto__和User.prototype也都是个对象，这个对象也一定会有父级,那这两个对象的父级是谁呢
     我们从Object来分析
     User的prototype下有__proto__，__proto__里面有show这个方法，说明User.prototype的原型是Object.prototype
     User下的__proto__里面有show这个方法，说明User.__proto__是Obect.prototype
