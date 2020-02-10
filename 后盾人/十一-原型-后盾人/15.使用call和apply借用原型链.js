@@ -11,7 +11,10 @@ Object.setPrototypeOf(hd, {
 
 console.log(hd.max())
 let xj = {
-  lessons: { js: 87, php: 66, Linux: 22, node: 99 }
+  lessons: { js: 87, php: 66, Linux: 22, node: 99 },
+  get data() {
+    Object.values(this.lessons)
+  }
 }
 
 console.log(hd.max.apply(xj))

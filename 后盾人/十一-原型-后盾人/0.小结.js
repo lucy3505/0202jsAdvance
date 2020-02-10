@@ -8,7 +8,7 @@
 //*JS中绝大多数数据都是对象
 // 比如说 new String new Number new Boolean new RegExp
 
-function User(){}
+function User() { }
 //函数比较特殊，有使用当对象使用，有时候当构造函数使用
 //有时候当构造函数使用
 // let hd = new User()
@@ -35,4 +35,47 @@ User.prototype.constructor
 
 //11
 //*既然prototype是个对象，那按理说每个对象都能成为prototyp
-Object.setPrototypeOf(a,b)
+Object.setPrototypeOf(a, b)
+
+//12
+//检测对象的原型链（__proto__）上是否有这个对象的构造函数的prototype
+//检测a这个对象的原型链(__proto__)上是否有A.prototype
+//*对象是否能继承这个构造函数的特性，就可以用instanceof来检测
+
+//13
+//isPrototypeOf相当于检测一个对象是否是另一个对象的父级
+
+//14
+//in和hasOwnProperty的属性都是检测对象属性的，检查对象中是否有某个属性，in会检测到原型链，hasOwnProperty只检测自身
+for (let key in object) {
+  if (obj.hasOwnProperty(key)) {
+    const ele = object[key]
+  }
+}
+
+//15
+//如果某个原型链中没有这个功能，借用别的原型链上的功能,使用方法.apply或方法.call（对象）
+
+//18
+//把方法放入原型，构造函数的原型会被每个实例化对象引用
+
+//19
+// this在原型中的体现：this和原型没关系，始终指向调用属性的对象
+
+//23
+// __proto__是属性访问器 setter getter
+let hd = {
+  action: {},
+  get proto() {
+    return this.action
+  },
+  set proto(value) {
+    if (value instanceof Object) {
+      this.action = value
+    }
+  }
+  // .__proto__原型链必须设置的是对象，否则无法设置成功
+
+
+  //31
+  //多态的实现
