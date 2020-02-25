@@ -6,27 +6,24 @@ let hd2 = {
   hd3: { name: "houdunren3" },
 }
 
+
 let obj = {}
-function repeat(hd) {
-
-  for (const key in hd) {
-
-    if (typeof hd[key] !== 'object') {
-      debugger
-      obj[key] = hd[key]
-
-
-      // debugger
-      return
-    }
-    else {
-      debugger
-      repeat(hd[key])
-    }
-
+for (const key in hd) {
+  if (typeof hd[key] !== 'object') {
+    return obj[key] = hd[key]
+  } else {
+    repeat(hd[key])
   }
-  // return obj
+
 
 }
+return obj
+
+
+
+
+// return obj
+
+
 repeat(hd2)
 console.log(obj)
