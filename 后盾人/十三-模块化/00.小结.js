@@ -16,3 +16,18 @@ import {title} from './XXX
 
 //``6  预解析
 //每次只在导入的时候解析一下，后面都不再解析
+
+// ``7模块的具名与别名
+export let site = "houdunren"
+export function show(params) {//这里如果函数不给名字会报错
+    return 'show-function'
+}
+export class User{
+    static render(){
+        return "user"
+    }
+}
+
+// export {site,show,User}上面的变量如果不屑export这里就要写
+
+//``8

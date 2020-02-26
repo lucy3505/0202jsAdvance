@@ -16,7 +16,9 @@
 //     c + v.price
 //   }
 // }
-
+function add2(t,c){
+  return t + c.price
+}
 let lesson = {
   lists: [
     { name: 'js', price: 100 },
@@ -37,7 +39,12 @@ let lesson = {
   get total() {
     // return this.lists.reduce(this.add(), 0)
     return this.lists.reduce(this.add1, 0)
+  },
+  get total2() {
+    // return this.lists.reduce(this.add(), 0)
+    return this.lists.reduce(add2, 0)
   }
 }
 
-console.log(lesson.total)
+console.log(lesson.total)//600
+console.log(lesson.total2)//600
