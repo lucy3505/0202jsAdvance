@@ -18,5 +18,3 @@ for (const key in hd) {
   obj[key] = hd[key]
 }
 
-//``方法三：展开语法
-let cn2 = {...cm1}
