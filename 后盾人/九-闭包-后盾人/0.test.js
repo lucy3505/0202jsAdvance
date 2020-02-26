@@ -97,37 +97,68 @@ function filterArr(min, max) {
 // console.log(books)
 
 //?reduce
-arr = [2, 3, 4, 1]
-// total = arr.reduce((count, item) => {
-//   return count + item
-// })
+// arr = [2, 3, 4, 1]
+// // total = arr.reduce((count, item) => {
+// //   return count + item
+// // })
 
-Array.prototype.myReduce = function (cb, initValue) {
-  if (this === null && !this instanceof Array) {
-    throw new Error(`Array.prototype.reduce called on null or undefined`)
+// Array.prototype.myReduce = function (cb, initValue) {
+//   if (this === null && !this instanceof Array) {
+//     throw new Error(`Array.prototype.reduce called on null or undefined`)
+//   }
+//   if (typeof cb !== 'function') {
+//     throw new Error(cb + 'is not a Function')
+//   }
+//   var len = this.length >>> 0
+//   var i = -1
+//   // var c=0
+//   // if (arguments.length >= 2) {
+//   // while(++i !==len){
+
+//   // }
+//   var total = arguments[1] || this[0]
+//   for (var j = arguments[1] ? 0 : 1; j < len; j++) {
+//     total = cb(total, this[j])
+
+//   }
+//   return total
+//   // }
+
+// var total = arr.myReduce((c, item) => c + item, 9)
+// console.log(total)
+// }
+
+
+//?改变this指向
+
+
+
+// let lisi = new User('lisi')
+// const newObj = { name: 'newobj' }
+
+// //^ 让newObj使用show方法
+// console.log(lisi.show())//这是window的name
+// //要像下面这么写
+// function User(name) {
+//   this.name = name
+//   this.show = function () {
+//     return this.name
+//   }
+// }
+// console.log(lisi.show.call(newObj))
+let lesson = {
+  name: 'lesson',
+  list: ['js', 'node', 'java'],
+  show: function () {
+    //^方法一：把this赋值给新变量
+    let _self = this
+    //^方法二：箭头函数，会自己向上找
+    return this.list.map(item => {
+      return `${this.name}-${item}`
+    })
   }
-  if (typeof cb !== 'function') {
-    throw new Error(cb + 'is not a Function')
-  }
-  var len = this.length >>> 0
-  var i = -1
-  // var c=0
-  // if (arguments.length >= 2) {
-  // while(++i !==len){
-
-  // }
-  var total = arguments[1] || this[0]
-  for (var j = arguments[1] ? 0 : 1; j < len; j++) {
-    total = cb(total, this[j])
-
-  }
-  return total
-  // }
-
-
 }
-var total = arr.myReduce((c, item) => c + item, 9)
-console.log(total)
+console.log(lesson.show())
 
 
 
