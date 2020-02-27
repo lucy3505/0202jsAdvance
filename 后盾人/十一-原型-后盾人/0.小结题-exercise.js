@@ -53,12 +53,65 @@
 // }
 
 
-//?题目:一个数组求最大值方法，用sort  一个对象求最大值，借用这个数组求最大值方法
-let hd = {
-    data: [1, 2, 3, 4, 5]
-}
-let xj = {
-    lessons: { js: 87, php: 66, Linux: 22, node: 99 }
-}
-console.log(hd.data.sort((a, b) => b - a)[0])
+// //?题目:一个数组求最大值方法，用sort  一个对象求最大值，借用这个数组求最大值方法
+// let hd = {
+//     data: [1, 2, 3, 4, 5]
+// }
+// let xj = {
+//     lessons: { js: 87, php: 66, Linux: 22, node: 99 }
+// }
+// // xj.constprototype.sort=function(){
 
+// // }
+// // console.log(hd.data.sort((a, b) => b - a)[0])
+// // const arr = xj.sort.call(Object.values(xj.lessons), (a, b) => b - a)
+// // console.log(arr[0])
+
+// // Object.setPrototypeOf(hd, {
+// //     max() {
+// //         return this.data.sort((a, b) => b - a)
+// //     }
+// // })
+// console.log(hd)
+// console.log(hd.__proto__)
+
+// //?为单个对象更改原型的方法
+
+
+function User() {
+    // this.name = function(){
+    //   console.log("user name")
+    // }//方法要放到prototype 节约内存
+}
+User.prototype.name = function () {
+    console.log('user name')
+}
+
+let hd = new User()
+console.log(hd)
+
+function Admin() {
+    //想用name方法
+}
+//   1)Admin.prototype = User.prototype //改变了构造函数原型
+//   2）Member.prototype = User.prototype
+// 这时候如果Admin要拥有自己原型方法就不行了，所以应该是构造函数原型的继承
+//   Admin.prototype.__proto__= User.prototype
+// Admin.prototype = Object.create(User.prototype)//这是创造一个空对象。create的第一个参数为这个空对象的原型，如果第二个参数传了对象也可以，如果不传就默认空对象，但是空对象的话应该要有constructor,只能自己去指定
+// Admin.prototype.constructor = Admin
+// //但是时候的constructor为可遍历的
+// //   那么使用 for(var i in obj) construcor就会遍历出constructor,只能换种方式压入
+// console.log(Admin.prototype)
+// // console.log(Admin.prototype.__proto__)
+// console.log(Object.getOwnPropertyDescriptor(Admin.prototype))
+// for (var i in Admin.prototype) {
+//     console.log(i)
+// }
+Admin.prototype.__proto__ = User.prototype//用这个方法就不会打印出constructor 但不标准，用defineProperty，但麻烦
+for (var i in Admin.prototype) {
+    console.log(i)
+}
+// Object.definePropertie(Admin.prototype, "constructor", {
+//     value: Admin,
+//     enumerable: false
+// })
