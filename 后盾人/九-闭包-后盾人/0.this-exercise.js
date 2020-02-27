@@ -22,7 +22,7 @@ let lesson = {
 // let lesson2 = {
 //   name: 'lesson',
 //   list: ['js', 'node', 'java'],
-//   show: () => {//这里使用箭头函数那么就指向调用这个lesson2对象的对象，也就是window,所以this.list = undefined
+//   show: () => {//这里使用箭头函数那么this就是window,所以this.list = undefined
 //     return this.list.map((item) => `${this.name}-${item}`)
 //   }
 // }
@@ -54,7 +54,8 @@ let DOM = {
   //     console.log(`${this.site}-${item.innerHTML}`)
   //   })
   // },
-  event: function (item) {//这里用箭头函数，那么里面的this就已经被绑定给外层对象window
+  event: function () {//这里用箭头函数，那么里面的this就已经被绑定给外层对象window
+    console.log(this)//window 
     item.addEventListener('click', () => {
       console.log(`${this.site}-${item.innerHTML}`)
     })
@@ -64,13 +65,25 @@ let DOM = {
     if (!btns) {
       throw new Error('error')
     }
-    btns.forEach(this.event)
-    // btns.forEach((item) => {
+
+    // btns.forEach((item) => {//用箭头函数，this指向词法作用域，也就是声明时，this会向外找this
     //   item.addEventListener('click', () => {
     //     console.log(`${this.site}-${item.innerHTML}`)
     //   })
     // })
 
+    // btns.forEach(function (item) {
+    //   console.log(this)//?this指向 window
+    //   item.addEventListener('click', () => {
+    //     console.log('addEventLister') //?this指向 window
+    //     console.log(this)
+    //     console.log(`${this.site}-${item.innerHTML}`)
+    //   })
+    // })
+    // let _self = this
+
+    btns.forEach(this.event)//这时候event函数里的this是指向window
+    btns.forEach(this.event.bind(this))//这时候变成绑定DOM对象,如果event是箭头函数，那么this也是绑定不成功的
   }
 
 }
