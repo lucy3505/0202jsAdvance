@@ -2,6 +2,11 @@ let lesson = {
   name: 'lesson',
   list: ['js', 'node', 'java']
 }
+
+let lesson2 = {
+  name: 'lesson',
+  list: ['js', 'node', 'java']
+}
 //?  要求：在lesson中写一个show方法，方法里面用map返回  调用对象的name -js'
 //^ 方法一：
 // lesson.show = function () {
@@ -47,34 +52,41 @@ let lesson = {
 
 // }
 
-let DOM = {
-  site: 'hd',
-  // event: (item, index) => {//这里用箭头函数，那么里面的this在这个就已经被绑定给外层对象window
-  //   item.addEventListener('click', () => {
-  //     console.log(`${this.site}-${item.innerHTML}`)
-  //   })
-  // },
-  event: function (item) {//这里用箭头函数，那么里面的this就已经被绑定给外层对象window
-    item.addEventListener('click', () => {
-      console.log(`${this.site}-${item.innerHTML}`)
-    })
-  },
-  bind(el) {
-    let btns = document.querySelectorAll(el)
-    if (!btns) {
-      throw new Error('error')
-    }
-    btns.forEach(this.event)
-    // btns.forEach((item) => {
-    //   item.addEventListener('click', () => {
-    //     console.log(`${this.site}-${item.innerHTML}`)
-    //   })
-    // })
+// let DOM = {
+//   site: 'hd',
+//   // event: (item, index) => {//这里用箭头函数，那么里面的this在这个就已经被绑定给外层对象window
+//   //   item.addEventListener('click', () => {
+//   //     console.log(`${this.site}-${item.innerHTML}`)
+//   //   })
+//   // },
+//   event: function (item) {//这里用箭头函数，那么里面的this就已经被绑定给外层对象window
+//     item.addEventListener('click', () => {
+//       console.log(`${this.site}-${item.innerHTML}`)
+//     })
+//   },
+//   bind(el) {
+//     let btns = document.querySelectorAll(el)
+//     if (!btns) {
+//       throw new Error('error')
+//     }
+//     btns.forEach(this.event)
+//     // btns.forEach((item) => {
+//     //   item.addEventListener('click', () => {
+//     //     console.log(`${this.site}-${item.innerHTML}`)
+//     //   })
+//     // })
 
+//   }
+
+// }
+
+// DOM.bind('button')
+
+
+var obj={
+  a:11,
+  fn(){
+    console.log(this.a)
   }
-
 }
-
-DOM.bind('button')
-
-
+console.dir(obj.fn)
