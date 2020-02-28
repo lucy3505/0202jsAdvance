@@ -13,6 +13,8 @@ class User {
     return new User(...args)
   }
 }
+
+//5
 console.dir(User)
 
 //10

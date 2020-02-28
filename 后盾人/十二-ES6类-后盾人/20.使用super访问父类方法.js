@@ -19,7 +19,7 @@ class Controller extends Common { }
 // }
 
 //定义子类继承父类
-class Lesson extends Controller {//有extends&&construtor 就一定要有super,没有extends就可以没有super
+class Lesson extends Controller {//!有extends&&construtor 就一定要有super,没有extends就可以没有super
   constructor(data) {
     super(data)//如果super没有添加方法的话，例如：super.show()  就会自动调用父类的constructor方法
     this.data = data

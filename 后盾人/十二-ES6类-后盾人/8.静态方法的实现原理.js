@@ -63,5 +63,5 @@ class User {
 let xj = User.create('xiangjun')
 console.log(xj)
 //如果构造名称变了，变成了Member
-// class Member{...}那么里面的return new User也要改名字，这时候把new User()改成new this()
+//* class Member{...}那么里面的return new User也要改名字，这时候把new User()改成new this()
 
