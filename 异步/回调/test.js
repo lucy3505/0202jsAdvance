@@ -10,20 +10,36 @@ function fun3() {
   console.log('fn3')
 }
 
-function fun0(fun3) {
-  setTimeout(() => {
-    fun1()
-    setTimeout(() => {
-      fun2()
-      setTimeout(() => {
-        fun3()
-      }, 1000)
-    }, 1000)
-  }, 1000)
-}
+// function fun0() {
+//   setTimeout(() => {
+//     fun3()
+//     setTimeout(() => {
+//       fun2()
+//       setTimeout(() => {
+//         fun1()
+//       }, 1000)
+//     }, 1000)
+//   }, 1000)
+// }
+// fun0()
 
-new Promise((resolve, reject) => {
-  if (a == 1) {
+let fun0=new Promise((resolve, reject) => {
+  setTimeout(()=>{
+    fun3()
     resolve()
-  }
+  },1000)
+}).then(value=>{
+ 
+  // return new Promise(resolve=>{
+    setTimeout(()=>{ 
+      fun2()
+      // resolve()
+    },1000)
+  // })
+}).then(value=>{
+ setTimeout(()=>{ 
+      fun1()
+  
+    },1000)
 })
+// fun0()
