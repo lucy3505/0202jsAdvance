@@ -1,4 +1,4 @@
-then返回也是promise, 且加入到微任务里，默认是对上一个promise的处理
+// then返回也是promise, 且加入到微任务里，默认是对上一个promise的处理
 //每一个then是对上一个promise的处理，默认是返回成功，就是你.then如果没有return new Promise去改变里面的状态的话，那么默认就是执行value=>{}，而不是reason=>{}
 //后面的then就是对我前面返回的Promise的处理
 let p1 = new Promise((resolve, reject) => {
@@ -8,6 +8,10 @@ let p2 = p1.then(
   value => console.log(value),
   reason => console.log(reason)
 )
+console.log(p1)//reject
+console.log(p2)//pending
 
-console.log(p1)//pending
-console.log(p2)//reject
+setTimeout(() => {
+  console.log(p1)//reject
+  console.log(p2)//resolved undefind
+}, 1000)
