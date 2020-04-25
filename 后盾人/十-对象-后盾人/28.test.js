@@ -4,13 +4,13 @@
 const web = {
     name: 'houdun',
     url: 'cms.com',
+    get site() {
+        return `${this.name}的网址是:${this.url}`
+    },
     set site(value) {
         [this.name, this.url] = value.split(',')
-    },
-    get site() {
-        return `${this.name}的网址上${this.url}`
     }
 }
 
-web.site = "houdunren,cms.com"
+web.site = "xyy,xyy.com"
 console.log(web.site)
