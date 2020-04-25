@@ -17,3 +17,4 @@ hd.render()//自己有就显示自己的，显示hd.render,没有的话就显示
 // hd.__proto__.render=function () {
 //     console.log("xj")
 // } 
+

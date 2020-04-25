@@ -23,3 +23,5 @@ function show(a){
 show(user)
 //传对象进去，传的是引用的地址值，所以函数里改变了这个对象，外部的这个对象也被改变了，如果要复制对象，就是对象的复制
 console.log(user)//{name:'houxunren',age:18}
+
+https://www.cnblogs.com/lzylzy/p/9564618.html

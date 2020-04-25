@@ -18,4 +18,15 @@ function interval(delay) {
 
 interval(100)
 
+//正确写法
+
+function interval(delay = 1000) {
+  return new Promise(resolve => {
+    let id = setInterval(() => {
+      console.log(1)
+    },delay)
+  })
+}
+interval(100)
+
 

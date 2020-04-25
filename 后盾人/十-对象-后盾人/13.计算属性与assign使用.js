@@ -50,7 +50,7 @@ let lessons = [{
 // }
 // }
 let res = lessons.reduce((obj,cur,index)=>{
-    obj[`${cur['category']}-${index + 1}} `] = cur;
+    obj[`${cur['category']}-${index + 1} `] = cur;
     return obj
 },{})
 console.log(res)

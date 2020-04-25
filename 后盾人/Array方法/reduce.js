@@ -26,6 +26,11 @@ if (!Array.prototype.reduce) {
       if (arguments.length >= 2) {
         value = arguments[1];
       } else {
+        // 为了兼容类似一些空值开头的数组
+        /*  var origin = [,,,4,5];
+            3 in origin //true  如果前面为空值，那么in会判断false
+            2 in origin //false
+        */
         while (k < len && !(k in o)) {
           k++;
         }
