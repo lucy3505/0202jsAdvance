@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>我是X号字</span>
+    <input />
+    <a href="#" id="size12">切换12号字体</a><br />
+    <a href="#" id="size16">切换16号字体</a><br />
+    <a href="#" id="size18">切换18号字体</a><br />
+    <script>
+        //作用域：变量可用范围
+        let wilson = "xyy"
+        function fn() {
+            let a = 1
+            console.log(wilson)
+        }
+        //作用域链：就近原则，一层层网上找（函数包函数）
+        let name = "xiaohua"
+
+        function fn2() {
+            let name = "xiaoming"
+            function fn3() {
+                let name = "xiaohong"
+                console.log(name)
+            }
+            fn3()
+        }
+        fn2()
+
+        //
+        let num = 1
+        function addNum() {
+            let num = 0;
+            num++
+            console.log(num)
+        }
+        addNum()
+        console.log(num)
+
+        //创建个闭包
+        function outer() {
+            let a1 = 0;
+            //a2未被引用所以被回收了
+            let a2 = 1;
+            return function inner() {
+                return a1
+            }
+        }
+        function fn5() {
+            let getInnerData = outer()
+            console.dir(getInnerData)
+        }
+        fn5()
+        //为什么只有a1在闭包里，a2没有
+        //a1放在closure里，a2没有，因为a2没被引用，所以释放了
+
+        // function fn6(){
+        //     let name = "xiaolv"
+        //     console.log(name)
+        // }
+        // window.fn6()
+
+        //html标签上得事件绑定，也是window来执行得
+
+        function fn6() {
+            let name2 = "xiaobai"
+            function displayName() {
+                console.log(name2)
+            }
+            displayName()
+        }
+        fn6()
+        function fn7() {
+            let name3 = "jian"
+            function displayName() {
+                console.log(name3)
+            }
+            return displayName
+            //有一些编程语言，函数中得局部变量仅在函数执行得时候可用，例如java，这个代码是跑不了得，因为会报错找不到name3,但是js里就会形成闭包
+        }
+        let myFn7 = fn7()
+        myFn7()
+        //闭包就是由该函数以及创建该函数得词法环境组合而成，该环境是包含闭包创建时能访问所有得局部变量
+
+        //! 闭包得使用场景：模块化
+
+        //工厂函数:创建将指定得值和参数相加
+        function makeAdder(x) {
+            return function (y) {
+                return x + y
+            }
+        }
+
+        // add5和add10共享相同得函数定义
+        let add5 = makeAdder(5)
+        let add10 = makeAdder(10)
+        console.log(add5(2))
+        console.log(add10(20))
+
+        // 允许将函数与其所操作得某些数据相关联，类似面向对象编程
+        //闭包=》类似面向对象编程
+
+        //事件防抖
+        function antiShake(fn, wait) {
+            let timeOut = null
+            return () => {
+                if (timeOut) clearInterval(timeOut)
+                timeOut = setTimeout(fn, wait)
+            }
+
+        }
+        let input1 = document.querySelector('input')
+        input1.addEventListener('input', antiShake(() => {console.log(111)}, 1000))
+
+
+        let size12 = document.querySelector('#size12')
+        let size16 = document.querySelector('#size16')
+        let size18 = document.querySelector('#size18')
+        function changeSize(el, size) {
+            return function () {
+                document.body.style.fontSize = size + 'px'
+            }
+        }
+        size12.addEventListener('click', changeSize(size12, 12))
+        size16.addEventListener('click', changeSize(size16, 16))
+        size18.addEventListener('click', changeSize(size18, 18))
+
+
+    </script>
+
+</body>
+
+</html>
