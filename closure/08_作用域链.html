@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function a(){
+      console.dir(a)
+      function b(){
+        console.dir(b)
+        function c(){
+          console.dir(c)
+        }
+        c()
+      }
+      b()
+    }
+    a()
+
+    //1.产生a函数的AO对象，aAO
+    //函数a的scopes:
+      //             0:aAO={b:fun}
+      //             1:Go
+      // 2:产生b函数的AO对象,bAO
+      // 函数b的scopes：
+      //             0:bAO={c:fun}
+      //             1:aAO={b:fun}
+      //             2:GO
+      // 3:产生c函数的AO对象，cAO
+      // 函数c的scopes:
+      //             0:cAO
+      //             1:bAO={c:fun}
+      //             2:aAO={b:fun}
+      //             3:GO
+  </script>
+  
+</body>
+</html>

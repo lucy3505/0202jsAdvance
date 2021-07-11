@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>测试1</button>
+  <button>测试2</button>
+  <button>测试3</button>
+  <script>
+    // 需求：点击某个按钮，提示点击的是第几个按钮
+    var btns = document.querySelectorAll("button")
+    console.log(btns)
+
+    //添加遍历监听
+    // for(var i = 0, length = btns.length; i < length; i++) {
+    //   var btn = btns[i]
+    //   btn.onclick = function () {
+    //     alert(`第${i + 1}个`)
+
+    //   }
+    // }
+    // console.log(i)
+    for(var i = 0, length = btns.length; i < length; i++) {
+      var btn = btns[i]
+      // btn.index=i//这个方法也可以
+      btn.onclick = (function (i) {
+       return function(e){
+         console.log(i)
+          alert(`第${i + 1}个`)
+          // alert(`第${this.index + 1}个`)
+       }
+      })(i)
+    }
+  </script>
+
+</body>
+
+</html>

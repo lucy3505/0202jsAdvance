@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function a(){
+      var num = 0
+      function b(){
+        console.log(num++) //形成闭包
+      }
+      return b
+    }
+    var demo = a()
+    console.dir(demo)
+    demo() //0
+    demo() //1  最后num变为2
+    //GO: {demo:b,a:fun}
+
+    //1.产生aAO
+    //aAO:{num:2,b:fun}
+
+    //2.产生bAO
+    //bAO:{}
+    //[[scopes]] - 0:bAO
+    //             1:aAO
+    //             2:GO
+
+    //每次函数调用都会产生一个新的AO对象
+    //3.产生一个新bAO对象
+     //[[scopes]] - 0:bAO
+    //             1:aAO
+    //             2:GO
+  </script>
+  
+</body>
+</html>

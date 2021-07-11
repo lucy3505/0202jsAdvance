@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function a() {
+      var aa = 111
+      function b() {
+        var aa = 222
+        console.log(aa)
+      }
+      b()
+    }
+    a()
+    //1.产生a的AO对象,aAO
+    //aAO：{aa:111,b:fun}
+    //2.产生b的AO对象,bAO
+    //bAO:{aa:222}
+    //[[scopes]]:
+              // 0:bAO  在执行的时候  bAO排第一位 bAO只有在执行b的时候才会产生，所以aAO是看不到bAO里面的变量的
+              // 1:aAO
+              // 2:GO
+  </script>
+</body>
+
+</html>

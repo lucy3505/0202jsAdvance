@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fun(n, o) {
+      console.log(o)
+      return {
+        fun: function (m) {
+          return fun(m, n);
+        }
+      };
+    }
+    var a = fun(0); a.fun(1); a.fun(2); a.fun(3);//undefined,0,1,2
+    var b = fun(0).fun(1).fun(2).fun(3);//undefined,?,?,?
+    var c = fun(0).fun(1); c.fun(2); c.fun(3);//undefined,?,?,?
+    a={fun://function}//Ao:{n:undefined,o:undefinded,fun:undefined}
+    a.fun(1)//{AO:m=undefined}
+            //[[scoped]]:-0-Ao{m=1}
+                         -1-fun:{n:0}  ===>1-fun:{n:1,o:0}
+    a.fun(2)////[[scoped]]:-0-Ao{m=2}
+                         -1-fun:{n:1,o:0}  ===>1-fun:{n:2,o:1}
+                         //n=m,o=n
+     a.fun(2)////[[scoped]]:-0-Ao{m=3}
+                         -1-fun:{n:2,o:1}  ===>1-fun:{n:3,o:2}
+                         //n=m,o=n
+  //fun(0).fun(1).fun(2).fun(3);//
+  
+                                  {AO:n=0}
+                                  ///[[scoped]]:-0-Ao{m=1,o:undefined}
+                                //[[scoped]]:-1-Ao{n=0,o:undefined}
+                                //           -
+                         -1-fun:{n:0}  ===>1-fun:{n:1,o:0}
+  </script>
+
+</body>
+
+</html>

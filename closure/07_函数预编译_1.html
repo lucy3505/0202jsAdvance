@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function a(test){
+    var i = 0
+    function b(){
+        console.log(222)
+    }
+    b()
+}
+a(1)
+//1.产生window对象
+//Go :1.查找变量声明
+      // 2.查找函数声明，将函数a作为window对象的属性名，值为function
+      //全局预编译结束
+      //执行代码
+      //执行17行，调用函数a，生产函数a的AO对象
+      //AO:1.查找形参test,变量i作为AO对象的属性名，值为undefined
+        // 2.实参1赋值给test,test:1
+         //3.查找局部函数b，b作为AO对象的属性名，值为function
+      //函数预编译结束
+      //执行
+      //i=0
+  </script>
+</body>
+</html>
