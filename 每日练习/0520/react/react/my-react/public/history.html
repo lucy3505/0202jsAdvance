@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 用的是浏览器自带的api(方法) 只能用事件跳转，好处是没有#-->
+    <a onclick="push('/a')">去a</a>
+    <a onclick="push('/b')">去b</a>
+    <script>
+        function push(path) {
+            //浏览器自带的方法  pushState
+            //最后一个参数放path
+            history.pushState({p: path},null,path)
+        }
+        window.addEventListener('popstate',(e) => {//只针对浏览器的前进和后退
+            console.log(history.length)//看有多少个历史记录
+            console.log(e)
+        })
+    </script>
+</body>
+
+</html>

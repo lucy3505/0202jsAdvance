@@ -18,5 +18,5 @@ class User {
 let hd = new User('houdunren')
 hd.name = "lisi"
 hd.url = "http://fdd.com"
-hd._url = "fds.com"
+// hd._url = "fds.com"
 console.log(hd)
