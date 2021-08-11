@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闭包</title>
+</head>
+
+<body>
+  <script>
+    //闭包
+    function test() {
+      var num = 0;
+      function add() {
+        num++;
+        console.log(num)
+      }
+      return add
+    }
+    var add = test()
+    add()
+    add()
+    add()
+
+  //例2
+    function test1() {
+      var num = 0;
+      var compute = {
+        add: function () {
+          num++;
+          console.log(num)
+        },
+        minus: function () {
+          num--;
+          console.log(num)
+        },
+      }
+      return compute
+    }
+    var compute = test1()
+    compute.add()
+    compute.add()
+    compute.add()
+
+    function Compute(){
+      var  num=10;
+      this.add = function(){
+        num++;
+        console.log(num)
+      }
+      this.minus=function(){
+        num--;
+        console.log(num)
+      }
+      //return this  相当于return 一个对象  类似于例二
+    }
+    var compute1 = new Compute()
+    compute1.add()
+    compute1.add()
+    compute1.add()
+    compute1.add()
+
+  </script>
+</body>
+
+</html>

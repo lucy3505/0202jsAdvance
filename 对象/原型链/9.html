@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //对象都有原型__proto__,构造函数的prototype也是有原型__proto__
+    //只要是对象就都有__proto__
+    Professor.prototype.tSkill = 'JAVA'
+    function Professor() { }
+    var professor = new Professor();
+    Teacher.prototype = professor;
+    function Teacher() {
+      this.mSkill = "js"
+      this.success = {
+        alibaba: '28',
+        tencent: '30'
+      },
+      this.students=500,
+      this.call=function(){
+        console.log('haha')
+      }
+    }
+    var teacher = new Teacher();
+    Student.prototype = teacher;
+    function Student() {
+      this.pSkill = "Html"
+    }
+    var student = new Student()
+    console.log(student.tSkill)
+    console.log(student)
+    //沿着__proto__往上去找相应的属性值就是原型链，__proto__的顶端就是Object.prototype
+    //原型链上的增删改只能是自己本身的增删改
+    student.success.baidu = "100"
+    // student.call=function(){//这个是直接变到student上
+    //   console.log('hehe')
+    // }
+    //techer变不变，student变不变?
+    console.log(teacher, student)//变到了techer的原型上this.success = {
+      //   alibaba: '28',
+      //   tencent: '30'
+      // baidu:'100'
+      // }
+      //student没有变
+      //所以说不是绝对的说示例对象不能更改__proto__上的值，引用值可以变，原始值不能变，但不推荐这样改
+
+      student.students++;
+      console.log(student,teacher)//student变为{students:501},teacher不变
+    
+
+  </script>
+</body>
+
+</html>

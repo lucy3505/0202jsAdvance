@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   function Person(){
+     this.smoke=function(){
+       this.weight--;
+     }
+   }
+   Person.prototype={
+     weight:130
+   }
+   var person=new person()
+   person.smoke()//undefined  函数没有返回值默认返回Undefined  除非加了new
+   
+ 
+ </script>
+</body>
+</html>

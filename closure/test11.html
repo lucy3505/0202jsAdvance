@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var b = 3;
+    console.log(a)///function a(){}
+    function a(a) {
+      console.log(a) //function a(){}
+      var a = 2;
+      console.log(a)//2
+      function a() {}
+        var b = 5;
+        console.log(b)//5
+    
+    }
+    a(1)
+    //go{a:function a(){}}
+    //ao{
+    //   a->undefined->1->function a(){}
+    // b->undefined
+    // }
+  </script>
+</body>
+
+</html>

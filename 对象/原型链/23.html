@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call,apply</title>
+</head>
+<body>
+  <script>
+function Teacher(){
+  this.name = "Mr.Li";
+  this.tSkill="JAVA"
+}
+Teacher.prototype={
+  pSkill:"JS/JQ"
+ 
+}
+var t = new Teacher()
+console.log(t)
+function Student(){
+  this.name = "Mr.Wang"
+}
+//想一个办法让Student.protoype和Teacher.prototype隔离开来
+
+//来一个中间的东西，且是个对象，让他继承Teacher的原型
+// 有一个中间的构造函数，实例化后接受Teacher的构造函数，再让Teacher.prototype等于中间的实例化对象
+function Buffer(){
+
+}//缓冲
+buffer.prototype=Teacher.prototype;
+var buffer=new Buffer()
+console.log(buffer)
+Student.prototype=buffer
+Student.prototype.age=18  //这样Teacher.prototype不会改变
+var s = new Student()
+console.log(s)
+//圣杯模式
+ </script>
+</body>
+</html>

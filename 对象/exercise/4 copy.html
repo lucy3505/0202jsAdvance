@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //ASCII码 表1  0-127 表2 128-255  都是一个字节
+    //unicode码  涵盖ASCII表  255以后都是2个字节
+    var str ="a";
+    var pos = str.charCodeAt(0)
+    // 写一个函数，接收任意一个字符串，算出这个字符串得总字节数
+function f(str){
+  var sum=0
+  const l=str.length
+  console.log(l)
+  for(var i=0;i<l;i++){ 
+     console.log(`${i}:${str.charCodeAt(i)}`)
+    sum+=str.charCodeAt(i)>255?2:1
+  
+  }
+  return sum
+}
+console.log(f('我ggggdd'))
+  </script>
+</body>
+
+</html>

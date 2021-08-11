@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var num=1;
+  var obj={}
+  var obj2 = Object.create(null)
+  document.write(num)//1
+  document.write(obj)//[object Object]
+  //document.write肯定隐式转换成string去打印
+  document.write(obj2)//报错  connot renvert object to primitive value
+  //不能转换成原始值，所以肯定要先转换成原始值才能打印出来
+  obj2.toString=function(){
+    return 'nihao'
+  }
+  document.write(obj2.toString())//nihao
+  console.log(Object.prototype)
+  console.log(Number.prototype)
+  console.log(String.prototype)
+  console.log(Boolean.prototype)
+  //系统内置得构造函数都有toString
+  Object.prototype.toString.call(1)//[object Number] 对象类型得number构造函数
+  Object.prototype.toString.call('a')//[object String] 对象类型得number构造函数
+  Object.prototype.toString.call(true)//[object Boolean] 
+  Object.prototype.toString.call([1,2,3,4])//[object Array] 
+  Object.prototype.toString.call({name:1})//[object Object] 
+  // Number.prototype.toString.call('aa')
+// VM571:1 Uncaught TypeError: Number.prototype.toString requires that 'this' be a Number
+//     at String.toString (<anonymous>)
+//     at <anonymous>:1:27
+
+  //原型方法得重写
+ </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>逗号运算符</title>
+</head>
+
+<body>
+  <script>
+  function createclass(stu){
+    console.log(stu)
+    const stus = stu||[]
+    return {
+      in:function(name){
+        stus.push(name)
+        console.log(stus)
+      },
+      out(name){
+        if(stus.find(item=>item===name)){
+          const i = stus.findIndex(item=>item===name)
+          stus.splice(i,1)
+        }
+
+        console.log(stus)
+      }
+    }
+  }
+  var class1=createclass(['a','b'])
+
+  class1.in('c')
+ 
+  class1.out('a')
+  class1.out('d')
+
+
+
+   
+  </script>
+</body>
+
+</html>

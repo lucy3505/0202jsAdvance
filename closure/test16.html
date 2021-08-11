@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    a = 1
+    function test(e) {
+      arguments[0] = 2
+      function e() {}
+      
+      console.log(e)//2
+      if (a) {
+        var b = 3
+      }
+      var c;
+      a = 4;
+      var a;
+      console.log(b);//undefined
+      f = 5//执行到这条语句的时候才挂f到go
+      console.log(c)//undefined
+      console.log(a)//4
+    }
+
+    var a;
+    test(1)
+    console.log(a)//1
+    console.log(f)//5
+    //go{  a:undefined->1
+    //     test:function
+    //   f:5
+    // }
+    //ao{
+    //  e:undefined->1->function->2
+    //  c:undefined
+    //  a:undefined->4
+    //  b:undefined
+    //   
+    // }
+  </script>
+</body>
+
+</html>

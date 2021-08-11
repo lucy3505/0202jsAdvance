@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //两个teacher的名字应该不一样
+    function Teacher({name,sex,weight,course}){
+     var a=2
+   
+    }
+    var t3=Teacher()
+    var t1=new Teacher({name:'zhangsan',sex:"male",weight:120,course:'js'})
+  
+    console.log(t1)
+    console.log(t3)//undefined 函数执行完就销毁了 return  
+    function Teacher2({name,sex,weight,course}){
+      this.name = name;
+      this.sex = sex;
+      this.weight = weight;
+      this.course=course
+      this.smoke=function(){
+        this.weight--;
+        console.log(this.weight)
+      }
+      this.eat = function(){
+        this.weight++;
+        console.log(this.weight)
+      }
+    }
+    var t2=new Teacher2({name:'zhangsan',sex:"male",weight:120,course:'js'})
+
+    console.log(t2)
+  </script>
+  
+</body>
+</html>

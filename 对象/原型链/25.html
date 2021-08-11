@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call,apply</title>
+</head>
+<body>
+  <script>
+      function Teacher(){}
+      function Student(){}
+      function Buffer(){}
+      Buffer.prototype=Teacher.prototype
+      var buffer = new Buffer()
+      Student.prototype=buffer
+      var s = new Student()
+      var t = new Teacher()
+      console.log(s)
+      console.log(t)
+
+      function inherit(Target,Origin){
+        function Buffer(){}
+        // Target.prototype=new Buffer() 不能放这里
+        Buffer.prototype=Origin.prototype
+        Target.prototype=new Buffer()
+        Target.prototype.constructor = Target
+        Target.prototype.super_class = Origin
+      }
+ </script>
+</body>
+</html>

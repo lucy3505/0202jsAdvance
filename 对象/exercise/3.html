@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var name = 'kankan';
+    name += 10;//kankan10
+    var type = typeof (name);//'string'
+    if (type.length === 6) {//true
+      type.text = 'string';//new String(type).text='string'
+      //delete
+    }
+    console.log(type.text);//undefined
+    //要输出string得话  var type =new String( typeof (name))
+    function Car(brand, color) {
+      this.brand = "Benz";
+      this.color = "red"
+    }
+    var car = new Car('Maz', "blank");
+    console.log(car)
+
+    function Test(a, b, c) {
+      var d = 1;
+      this.a = a;
+      this.b = b;
+      this.c = c;
+      function f() {
+        d++;
+        console.log(d)
+      }
+      this.g = f
+      // return this;->闭包  把f带出去
+    }
+
+    var test1 = new Test()
+    test1.g()//2
+    tes1.g()//3
+    var test2 = new Test()
+    test2.g()//2
+
+
+
+
+  </script>
+</body>
+
+</html>

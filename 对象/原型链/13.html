@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //  Object.create(对象，null)//必须放东西，要嘛是对象要嘛是null
+  //创建对象用的,可以指定原型
+  // var obj1=Object.create()
+  function Obj(){}
+  Obj.prototype.num=1;
+  var obj1=Object.create(Obj.prototype)
+  var obj2= new Obj()
+  console.log(obj1)
+  console.log(obj2)
+  //两个出来的对象是一样的
+  var test={num:2}
+  var obj3=Object.create(test)//自定义原型的功能
+    //new做的事：
+    //实例化obj2
+    //调用构造函数obj的初始化属性和方法
+    //指定实例对象的原型
+
+
+    //创建obj5空对象
+    var obj5=Object.create(null);
+    console.log(obj1)
+    obj1.num=1
+    var obj6=Object.create(obj5)//用来做继承
+    console.log(obj6)
+    console.log(obj6.num)
+
+ 
+ </script>
+</body>
+</html>

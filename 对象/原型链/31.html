@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call,apply</title>
+</head>
+
+<body>
+  <script>
+  //对象枚举
+  //枚举->遍历
+  var arr=[1,2,3,4,5];
+  // js中数组是特殊得对象
+  for(var i=0;i<arr.length;i++)
+  {
+    console.log(arr[i])
+  }
+  var car = {
+    brand:'benz',
+    color:'red',
+    displacement:'2.0',
+    lang:'5',
+    width:'2.5'
+  }
+  for(var key in car){//遍历对象
+    console.log(car[key])
+  }
+
+  for(var key in arr){//遍历数组
+    console.log(arr[key])
+  }
+  </script>
+</body>
+
+</html>

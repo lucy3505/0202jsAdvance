@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    function test() {
+      console.log(b)//undefined
+      if (a) {
+        var b = 2//b放ao 预编译阶段只看有没有变量声明  不看执行语句
+      }
+      c = 3
+      console.log(c)//3
+    }
+    var a;
+    test()
+    a = 1
+    console.log(a)//1
+    console.log(a)//1
+    //go{a:undefined
+    //     test:function
+    //    c:3
+    // }
+    //ao{
+    //   a->undefined
+    //    b->undefined
+    // }
+  </script>
+</body>
+
+</html>

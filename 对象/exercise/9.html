@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  console.log(undefined==null)
+  console.log(undefined===null)
+  console.log(isNaN('100'))
+  console.log(parseInt('1a')==1)
+
+  // var num=Number('100')
+  // isNaN(num) isNaN是经过Number转换
+  //parseInt('1a23')//1
+
+  function isNaN(num){
+    var res = Number(num)
+    // var res = Number(num)+'' 所以要用这个
+    console.log(res)//如果num是string,则res=NaN  但是NaN!==NaN
+    if(res==NaN){
+      return true
+    }else{
+      return false
+    }
+  }
+
+  //{}=={}? false
+  </script>
+</body>
+
+</html>

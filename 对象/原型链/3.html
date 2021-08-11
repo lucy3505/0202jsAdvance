@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   
+    function Handphone(color,brand){
+      this.color=color;
+      this.brand = brand;
+     
+    }
+    // Handphone.prototype.rom="64G"
+    // Handphone.prototype.ram="6G"
+    // Handphone.prototype.screen="16:9"
+    // Handphone.prototype.system="android"
+    //都是下面这种写法
+    Handphone.prototype={
+      rom:"64G",
+      ram:"6G",
+      screen:'16:9',
+      system:'android',
+      call:function(){
+        console.log('i an calling')
+      }
+    }
+    
+
+
+    // var hp1 = new Handphone('red','xiaomi')
+    // var hp2 = new Handphone('black','huawei')
+    // console.log(hp1.rom)
+    // console.log(hp2.ram)
+    // console.log(hp2.screen)
+    var hp1=new Handphone('black','huawei')
+    console.log(hp1)
+    console.log(hp1.constructor)//f Object({[nactive code]}) 可以看出是个函数
+    console.log(Handphone.prototype)
+    //constructor->构造函数本身
+    //把构造函数原型上的constructor改变掉
+    function Telephone(){
+
+    }
+    Handphone.prototype={
+      constructor:Telephone
+    }
+    //可以硬指定constructor的指向
+    //因为我们用了 Handphone.prototype={}这个方式，使得里面的constructor没有了，否则默认是有这个属性并指向Handphone的
+    console.log(Handphone.prototype)
+    console.log(hp1.rom)
+    var hp2=new Handphone('black','huawei')
+    console.log(hp2.rom)
+    console.log(hp2)
+
+    
+  </script>
+</body>
+</html>

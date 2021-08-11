@@ -13,19 +13,57 @@ function qibo(n) {
 
 /* 案例2：小青蛙跳台阶
 一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法。 */
+// n=1 1  n=2 2  n=3 3 n=4 5 n=5 
+// f(1)=1
+// f(2)=2
+// f(3)=f(1)+f(2)
+// f(4)=f(3)+f(2)
 
-function frog(n) {
-  if (n == 1) {
+function f(n){
+  if(n===1){
     return 1
   }
-}
-
-1, 2, 3, 4
-4, 3, 2, 1
-fn(n){
-  if (n) {
-    return 1
+  if(n===2){
+    return 2
   }
-  fn()
-
+  return f(n-1)+f(n-2)
 }
+console.log(f(5))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function frog(n) {
+//   if (n == 1) {
+//     return 1
+//   }
+// }
+
+// 1, 2, 3, 4
+// 4, 3, 2, 1
+// fn(n){
+//   if (n) {
+//     return 1
+//   }
+//   fn()
+
+// }

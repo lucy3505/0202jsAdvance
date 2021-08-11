@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    //构造函数中得this
+    function Car(color, brand) {
+      //this={}  这个对象里面是有东西得，现在就看成是空对象
+      this.color = color
+      this.brand = brand
+      //  return this  隐式return this
+    }
+
+    //当Car被实例化得时候相当于普通函数被执行 new Car就是Car被实例化得意思
+    //函数执行就会有AO,这时候得AO={
+    //    this:{}
+    //  }
+    var car = new Car('red', 'Benz')//--->this
+    //加了new关键字用来实例化对象，没有new就是在执行函数
+    // 函数执行就创建AO对象，这时候函数执行看到了new关键字  就给AO里面保存this空对象
+    //new 就是改变this指向
+    //其实不用new我们也能自己构造出this  例如Car2
+
+    function Car2(color, brand){
+      var me = {}
+      me.color=color
+      me.brand = brand
+      return me
+    }
+    var car2= Car2('red', 'Benz')
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   // 是不是所有对象都继承Object.prototype,因为Object.prototype是顶端
+   var obj=Object.create(null)
+    obj.num=1
+    console.log(obj)
+     console.log(Object.prototype)
+    //  obj.toString()
+     //不是所有的对象都继承Object.prtotype  Object.create(null)
+    
+    var obj1={count:2}
+     obj.__proto__=obj1
+     console.log(obj)//深色的__proto__
+     //{num:1
+    //     __proto__:Object
+    // }
+      console.log(obj.count)//undefined
+      //自己指定的__proto__是没用的，不会自动去查找__proto__上的属性，必须是系统内置的__proto__才有用，可以更改prototype，但不能自己造__proto__
+
+    var obj2={count:3}
+    console.log(obj2)//浅色的__proto__
+
+ 
+ </script>
+</body>
+</html>

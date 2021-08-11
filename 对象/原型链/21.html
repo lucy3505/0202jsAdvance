@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call,apply</title>
+</head>
+<body>
+  <script>
+    //call/apply
+    function Teacher(name,mSkill){
+      this.name= name;
+      this.mSkill=mSkill
+    }
+    function Student(name,mSkill,age,major){
+      Teacher.apply(this,[name.mSkill])//每次new都要走一次这个函数
+      this.age = age;
+      this.major = major;
+    }
+    var student=new Student('Mr.Zhang',"js/jq",18,"computer")
+    //可以继承(借用)属性，但是不能继承prototype
+    //借用别人的属性和方法可以用call和apply
+ </script>
+</body>
+</html>

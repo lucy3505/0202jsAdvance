@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //undefined  null能不能使用toString方法,因为不能经过包装类转换成对象，且没有原型
+
+ var num=1;
+ //原始值是没有属性的
+ console.log(num.toString());//可以使用是因为包装类
+ //new Number(1)=>toString()
+ var num2 = new Number(num)
+ console.log(num2.toString())//调用了自己身上的toString,不是Object上的toString()
+ </script>
+</body>
+</html>

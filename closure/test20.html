@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>逗号运算符</title>
+</head>
+
+<body>
+  <script>
+    var fn = (function test1() {
+      return 1;
+    }, function test2() {
+      return '2';
+    }
+    )()
+    var num = (1, 2)
+    console.log(num)
+    console.log(typeof fn)//string
+
+    var a=10;
+    if(function b(){}){//(function b(){}) 有括号就是表达式，括号会忽视名字，括号里面去声明函数，只要变成表达式，b就被忽略掉，b只要被忽略掉，b就是Undefined 放到typeof里面就是undefined  表达式是忽略函数名的
+      a+=typeof(b)
+    }
+    console.log(a)
+
+
+   
+  </script>
+</body>
+
+</html>

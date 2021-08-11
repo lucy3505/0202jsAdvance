@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var f = (function f() {
+      return '1'
+    },
+      function g() {
+        return 2;
+      }
+    )
+    console.log(typeof f)//function
+    // var f = (function f,function g)逗号表达式取后面的
+
+    var f = (function f() {
+      return '1'
+    },
+      function g() {
+        return 2;
+      }
+    )()
+    console.log(typeof (f))
+  </script>
+</body>
+
+</html>

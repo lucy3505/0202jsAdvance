@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call,apply</title>
+</head>
+<body>
+  <script>
+
+// 年龄多少岁姓名为xx买了一辆排量为xx得什么颜色得什么牌子得车  call apply
+function Car(opt){
+  const{placement,color,brand}=opt
+  this.placement = opt.placement
+  this.color=opt.color
+  this.brand = opt.brand
+}
+function Person(opt){
+ 
+  const {name,age,caropt}=opt 
+  Car.call(this,caropt)
+  this.name=name
+  this.age = age
+  this.output = function(){
+    console.log('年龄为'+this.age+"岁得"+this.name+"买了一辆排量为"+this.placement+"得"+this.color+"得"+this.brand+"车")
+  }
+}
+
+var lucy=  new Person({name:'lucy',age:22,caropt:{placement:2000,color:'红色',brand:'benz'}})
+lucy.output()
+
+
+ </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call,apply</title>
+</head>
+<body>
+  <script>
+
+function Person(){}
+Person.prototype.name = "lucy"
+
+var p=new Person()
+console.log(p)
+//一切这个构造函数构造出来的对象都继承于这个prototype原型
+
+Professor.prototype={
+  name:"Mr.Zhange",
+  tSkill:"JAVA"
+}
+function Professor(){}
+var professor = new Professor()
+Teacher.prototype=professor
+function Teacher(){
+  this.name="Mr.Wang";
+  this.mSkill="JS/JQ"
+}
+var teacher = new Teacher()
+console.log(teacher)//可以访问到tSkill,通过professor的__proto__访问到的
+
+Student.prototype=teacher//这一步继承了老师和老师的原型，如果我要自己在原型上加点自己的东西不好加，而且老师对象我并不需要里面的东西，我只要Teacher.prototype的东西
+function Student(){
+  this.name="Mr.Li";
+  this.pSkill="HTml"
+}
+var student = new Student()
+console.log(student)//这个就是原型链继承，但并不好用，
+//原型链继承就是把prototype写成别的对象，继承别的对象上的属性和方法
+Student.prototype.aa="1"//会把aa加到teacher对象身上
+console.log(teacher)
+ </script>
+</body>
+</html>

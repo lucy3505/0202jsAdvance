@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var arr = [1, 2, 3, 4, 5]
+    arr.length = 3
+    console.log(arr)//[1,2,3]  length是几就截断到几
+    arr.length = 6
+    console.log(arr)//[1,2,3，4，6，empty]  length是几就截断到几
+    var str = "abc"
+    str.length = 1//new String(str).length=1
+    //没地方保存 delete
+    console.log(str.length)//3 new String(str).length 去新new一个实例化对象 和上一步得实例化对象是分开得  上一步去new完后没地方保存就删除了
+  </script>
+
+</body>
+
+</html>

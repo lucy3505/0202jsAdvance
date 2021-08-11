@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    //构造函数中得this
+    function Car(color, brand) {
+     
+      this.color = color
+      this.brand = brand
+      // return 123 //出来还是red
+      // return {},[],function(){} //出来就是{},[],function
+      //return 是原始值就没用，仍旧return this,return 是引用值就有用
+    }
+    var car = new Car('red', 'Benz')//--->this
+    console.log(car.color)
+ 
+  </script>
+
+</body>
+
+</html>

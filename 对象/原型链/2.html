@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   function Test(){
+
+   }
+   Test.prototype.name="propto"
+    var test = new Test()
+
+    console.log(test.name)
+    test.num=1
+    console.log(Test.prototype,test)
+    console.log(test)
+    delete test.name;
+    console.log(Test.prototype,test)
+
+    //通过实例化出来的对象示例去更改protyotype上的属性是不行的，只能查看
+  </script>
+</body>
+</html>

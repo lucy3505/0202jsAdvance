@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+var x = 1;
+//一旦function变成表达式就会被立即执行，但执行完后就找不到了(function(){})就是立即执行的意思
+// 有括号就是表达式
+//括号有自己的用途：能把里面的东西变成表达式
+if(function f(){}){
+  x+=typeof f;//f放到别的地方会报错，但唯独给typeof 只会报Undefined
+}
+console.log(x)//1undefined
+
+  </script>
+</body>
+
+</html>

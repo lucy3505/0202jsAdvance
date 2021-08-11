@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call,apply</title>
+</head>
+
+<body>
+  <script>
+    var initCompute = (function(){
+      var a = 1,b=2;
+      function add(){
+        console.log(a+b)
+      }
+      function minus(){
+
+      }
+      function mul(){
+
+      }
+      function div(){
+
+      }
+      return function (){
+        add();
+        minus();
+        mul();
+        div();
+      }
+    })()
+    initCompute()
+
+    function initFunction(){}
+
+    function init(){//按需来启动得话就用这种方法，交给一个变量等待去执行
+      initCompute()
+      initFunction()
+    }
+    window.onload=function(){
+      init()
+    }
+
+    //插件化方式启动
+    ;(function(){
+      var Slider = function(opt){}
+      Slider.prototype={}
+      window.Slider=Slider
+    })()
+    var slider = new Slider({})
+
+  </script>
+</body>
+
+</html>

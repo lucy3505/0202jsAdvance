@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call,apply</title>
+</head>
+<body>
+  <script>
+//原型链继承
+function Professor(){
+  this.name="professor"
+}
+Professor.prototype={
+  call(){console.log('my name is'+this.name)}
+}
+var professor=new Professor()
+function Teacher(){
+  this.name = "teacher"
+  this.age=29
+}
+Teacher.prototype=professor
+var teacher= new Teacher()
+
+
+ </script>
+</body>
+</html>

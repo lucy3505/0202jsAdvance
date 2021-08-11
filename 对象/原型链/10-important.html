@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Car(){
+      this.brand = "benz"
+    }
+    Car.prototype={
+      brand:'mazda',
+      intro:function(){
+        console.log('wo shi '+this.brand+"che")
+      }
+    }
+    var car=new Car();
+    //function Car(){
+    //   var this={
+    //     brand:'benz'
+    //   }
+    // }
+    //Car prototype
+    car.intro()//只是调用了Car.prototype上的方法，但我new的时候，this已经指向了我自身
+  </script>
+</body>
+</html>

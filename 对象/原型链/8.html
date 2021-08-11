@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作业</title>
+</head>
+<body>
+  <script>
+//写一个插件，任意传两个数字，调用插件内部方法可进行加减乘除功能
+;(function (num1,num2){
+  var Compute=function(opt){
+    this.x=opt.num1||0;
+    this.y=opt.num2||0
+  }
+  Compute.prototype={
+    add(){
+      return this.x+this.y
+    },
+    reduce(){
+      return this.x-this.y
+    },
+    mul(){
+      return this.x*this.y
+    },
+    chu(){
+      return this.x/this.y
+    }
+  }
+  
+  window.Compute=Compute
+})()
+var compute = new Compute({num1:1,num2:2})
+
+console.log(compute.add())
+
+  </script>
+</body>
+</html>

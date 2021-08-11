@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>call,apply</title>
+</head>
+<body>
+  <script>
+function Teacher(){
+  this.name = "Mr.Li";
+  this.tSkill="JAVA"
+}
+Teacher.prototype={
+  pSkill:"JS/JQ"
+}
+var t = new Teacher()
+console.log(t)
+function Student(){
+  this.name = "Mr.Wang"
+}
+Student.prototype=Teacher.prototype //继承了原型，并没有去继承实例化之后的对象，于20的区别
+Student.prototype.age = 18;//Teacher.prototype也跟着改了 Teacher.prototype变成了公共原型
+var s = new Student()
+ </script>
+</body>
+</html>
