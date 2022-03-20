@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
+<title>文字自动分插不同的div-Jason Yu</title>
+<style type="text/css">
+*{margin:0;padding:0;}
+body{line-height:24px;font-family:SimSun;font-size:12px;color:#000;}
+#box1{height:96px;}
+.box{width:200px;overflow:hidden;margin-top:10px;border:1px solid #000;}
+</style>
+</head>
+<body>
+<div id="box1" class="box"></div>
+<script type="text/javascript">
+var str = "这里是一段话,这短话的文字可以很随意的哦，只要达到一定数量，就自动会分页，你信不信？不信也得信啊，这是真的，哪怕再长的文字，我复制一段话吧，下面这一段话就是复制过来的，我要准备复制了哦，准备好了没呢？这里是一段话,这短话的文字可以很随意的哦，只要达到一定数量，就自动会分页，你信不信？不信也得信啊，这是真的，哪怕再长的文字，我复制一段话吧，下面这一段话就是复制过来的，我要准备复制了哦，准备好了没呢？";
+var oBox1 = document.getElementById("box1");
+function fnTextOver(n1){
+    var newBox2 = document.createElement("div");
+    document.body.appendChild(newBox2);
+    newBox2.className = "box";
+    for(var i=n1; i<=str.length; i++){
+        newBox2.innerHTML = str.substring(n1,i);
+        if(newBox2.offsetHeight<=98){
+            if(i==str.length){
+                newBox2.style.height = "96px";
+            }
+        }else{
+            newBox2.innerHTML = str.substring(n1,i-1);
+            newBox2.style.height = "96px";
+            arguments.callee(i-1);
+            break;
+        }
+    }
+}
+
+function fnShowText(){
+    var newBox = document.createElement("div");
+    document.body.appendChild(newBox);
+    newBox.className = "box";
+    for(var i=1; i<=str.length; i++){
+        newBox.innerHTML = str.substring(0,i);
+        if(newBox.offsetHeight<=98){
+            oBox1.innerHTML = str.substring(0,i);
+            if(i==str.length){
+                document.body.removeChild(newBox);
+            }
+        }else{
+            document.body.removeChild(newBox);
+            fnTextOver(i-1);
+            break;
+        }
+    }
+}
+fnShowText();
+</script>
+</body>
+</html>
