@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .clearfix {
+        clear: both;
+      }
+      .wrap {
+        width: 500px;
+        height: 500px;
+        margin: 50px auto;
+        box-shadow: 0 0 5px #999;
+      }
+      .tab {
+        height: 50px;
+      }
+      .tab .t-item {
+        float: left;
+        width: 25%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+      }
+      .tab .t-item.active {
+        background-color: #000;
+        color: #fff;
+      }
+      .page {
+        height: 450px;
+        position: relative;
+      }
+      .page .p-item {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 450px;
+        text-align: center;
+        font-size: 50px;
+      }
+      .page .p-item.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="tab clearfix">
+        <div class="t-item active">选项一</div>
+        <div class="t-item">选项二</div>
+        <div class="t-item">选项三</div>
+        <div class="t-item">选项四</div>
+      </div>
+
+      <div class="page">
+        <div class="p-item active">页面1</div>
+        <div class="p-item">页面2</div>
+        <div class="p-item">页面3</div>
+        <div class="p-item">页面4</div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      (function () {
+        var Tab = function () {
+          console.log(1);
+          this.tab = document.querySelector(".tab");
+          // debugger;
+          console.log(this.tab);
+          this.tabs = document.querySelectorAll(".t-item");
+          this.pages = document.querySelectorAll(".p-item");
+        };
+        Tab.prototype = {
+          init: function () {
+            this.bindEvent();
+            // function test(){
+            //   console.log(this)//这个this指向window
+            // }
+            // return function(){
+            //   // this这个也指向window
+            // }
+          },
+          bindEvent: function () {
+            // this.tab.addEventListener("click", this.tabClick, false);
+            var _self = this;
+            // this.tab.addEventListener(
+            //   "click",
+            //   function () {//谁触发这个函数,this就指向谁
+            //     _self.tabClick.call(_self);
+            //   },
+            //   false
+            // );
+            // this.tab.addEventListener("click", this.tabClick.bind(this), false);//bind一般用于绑定事件驱动的
+            this.tab.addEventListener(
+              "click",
+              () => {
+                this.tabClick();
+              },
+              false
+            );
+          },
+          tabClick: function (e) {
+            console.log(this); //这里的this一般要让他指向实例对象
+            var e = e || window.event,
+              tar = e.target || e.srcElement,
+              className = tar.className,
+              oTabs = this.tabs,
+              oPages = this.pages,
+              len = oTabs.length,
+              thisIndex = Array.prototype.indexOf.call(oTabs, tar),
+              tItem,
+              pItem;
+            if (className === "t-item") {
+              for (var i = 0; i < len; i++) {
+                tItem = oTabs[i];
+                pItem = oPages[i];
+                tItem.className = "t-item";
+                pItem.className = "p-item";
+              }
+              oTabs[thisIndex].className += " active";
+              oPages[thisIndex].className += " active";
+            }
+          },
+        };
+
+        return new Tab().init();
+      })();
+    </script>
+  </body>
+</html>

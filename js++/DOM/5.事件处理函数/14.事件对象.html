@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        width: 300px;
+        height: 300px;
+        background-color: blue;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper"></div>
+    <div class="box"></div>
+    <script>
+      //Event对象=new MouseEvent()
+      var wrapper = document.getElementsByClassName("wrapper")[0];
+      var box = document.getElementsByClassName("box")[0];
+
+      wrapper.onclick = function (e) {
+        //ie 传到window.event  没有传到e里面
+        console.log(e);
+        var e = e || window.event;
+      };
+      box.onclick = function (e) {
+        var e = e || window.event;
+        var tar = target || srcElement;
+        console.log(e);
+      };
+      //target srcElement->事件源对象  这两个对象完全一样  只是兼容问题
+      //chrome两个都支持  ie支持srcElement 火狐支持target
+    </script>
+  </body>
+</html>

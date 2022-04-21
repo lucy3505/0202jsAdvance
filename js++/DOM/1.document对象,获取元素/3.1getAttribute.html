@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box" id="box" style="background-color: green">
+      我是文本节点
+      <!-- 我是注释节点 -->
+      <h1>我是标题标签</h1>
+      <a href="">我是超链接</a>
+      <p>我是段落标签</p>
+    </div>
+    <script>
+      var div = document.getElementsByTagName("div")[0];
+
+      //attributes getAttributeNode()
+      //  div.attributes=>NamedNodeMap {0: class, 1: id, 2: style, class: class, id: id, style: style, length: 3}
+
+      //div.getAttribute("id")=>"box"
+      //div.getAttributeNode("id")=>id="box"
+      // div.getAttributeNode("id").nodeType
+      //getAttributeNode是获取节点 里面是有nodeType nodeValue这些值得
+      // attributes[1].value也可以
+      //getAttribute就不行
+
+      //div.hasChildNodes()  //true或false  换行也算文本节点
+    </script>
+  </body>
+</html>

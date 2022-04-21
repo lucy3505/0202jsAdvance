@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="index.css" />
+  <body>
+    <div class="slider-wrap">
+      <div class="slider">
+        <ul class="slider-list">
+          <li class="slider-item">
+            <a><img src="img/1.jpg" alt="" /></a>
+          </li>
+          <li class="slider-item active">
+            <a><img src="img/2.jpg" alt="" /></a>
+          </li>
+          <li class="slider-item">
+            <a><img src="img/3.jpg" alt="" /></a>
+          </li>
+          <li class="slider-item">
+            <a><img src="img/4.jpg" alt="" /></a>
+          </li>
+          <li class="slider-item">
+            <a><img src="img/5.jpg" alt="" /></a>
+          </li>
+          <li class="slider-item">
+            <a><img src="img/6.jpg" alt="" /></a>
+          </li>
+        </ul>
+      </div>
+      <div class="thumbs">
+        <ul class="thumbs-list">
+          <li class="thumb-item cur">
+            <a><img src="img/1.jpg" alt="" /></a>
+          </li>
+          <li class="thumb-item">
+            <a><img src="img/2.jpg" alt="" /></a>
+          </li>
+          <li class="thumb-item">
+            <a><img src="img/3.jpg" alt="" /></a>
+          </li>
+          <li class="thumb-item">
+            <a><img src="img/4.jpg" alt="" /></a>
+          </li>
+          <li class="thumb-item">
+            <a><img src="img/5.jpg" alt="" /></a>
+          </li>
+          <li class="thumb-item">
+            <a><img src="img/6.jpg" alt="" /></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="index.js"></script>
+    <script>
+      var slider = new Slider({
+        sliderItem: ".slider-item",
+        thumbItem: ".thumb-item",
+      });
+      // var slider = new Slider();
+    </script>
+  </body>
+</html>

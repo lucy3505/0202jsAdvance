@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      /* height: 2000px;
+      width: 2000px; */
+    }
+    a {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      top: 0;
+      left: 0;
+    }
+    div {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+  </style>
+  <body>
+    <a href="javascript:;"></a>
+    <div></div>
+    <script src="./utils.js"></script>
+    <script src="./5.index.js"></script>
+    <script>
+      var oLink = document.getElementsByTagName("a")[0];
+      var oMenu = document.getElementsByTagName("div")[0];
+      oLink.dragNclick(oMenu, function () {
+        window.open("http://baidu.com");
+      });
+    </script>
+    <script>
+      //鼠标左中右  0，1，2
+
+      // e.button
+
+      // document.onclick = function (e) {
+      //   //右键和中键都不能触发click事件   mousedown，mouseup可以促发
+      //   console.log(e);
+      // };
+
+      // document.onmousedown = function (e) {
+      //   console.log(e);
+      //要在ie10以上开发左右中键  不是ie10以上就不要做，而且没必要做兼容
+      //e.button  左键：0，中键：1，右键：2
+      // };
+    </script>
+  </body>
+</html>

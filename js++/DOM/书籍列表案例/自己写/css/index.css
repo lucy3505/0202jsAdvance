@@ -1,0 +1,40 @@
+.list-hd {
+  height: 44px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: orange;
+  text-align: center;
+  line-height: 44px;
+  color: #fff;
+  z-index: 1;
+}
+.container {
+  margin-top: 44px;
+}
+
+.bk-list .list-item .bk-pic {
+  height: 150px;
+  position: absolute;
+  padding: 10px;
+}
+.bk-list .list-item {
+  border-bottom: 1px solid #000;
+  position: relative;
+  height: 150px;
+}
+.bk-list .list-item .bk-info {
+  color: #424242;
+  margin-left: 118px;
+}
+.bk-list .list-item .bk-info h2,
+p {
+  margin-top: 12px;
+}
+.bk-list .list-item .bk-info .intro {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #999;
+}

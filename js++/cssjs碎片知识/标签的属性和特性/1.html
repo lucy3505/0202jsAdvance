@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="username" value="张三" data="zhangsan" />
+
+    <!-- input type id value: 特性 属性  本身就有的叫特性,属性包含了特性，这个标签本身就具备的属性我们称为特性
+    data-name:自定义的属性也叫属性
+
+    为什么这么区分？和js有关 -->
+    <script>
+      var oInput = document.querySelector("#username");
+      //oInput.value="张三"  oInput.type="text" oInput.id都可以取出来且能直接修改，且能直接增加oInput.name="22"
+      //oInput.data=undefined取不出来，且改不了,也增加不了
+      //能直接读取的就叫特性，不能的叫属性
+      //非特性不能直接取出来
+      /**
+       *
+       * 非特性专门用setAttribute,getAttribute这个方法也可以用来读取和修改特性值，只不过特性值可以直接用.语法拿去和修改，比较方便
+       * oInput.setAttribute("data","lisi")
+       * oInput.getAttribute("data")
+       *
+       *
+       */
+    </script>
+  </body>
+</html>

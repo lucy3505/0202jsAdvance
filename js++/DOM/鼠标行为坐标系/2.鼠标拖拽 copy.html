@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        width: 5000px;
+        height: 2000px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script src="./utils.js"></script>
+    <script>
+      var box = document.getElementsByClassName("box")[0],
+        x,
+        y;
+
+      //mousedown mouseup mousemove
+
+      //鼠标的移动和抬起一定要在鼠标按下的事件里面
+
+      // box.onmousedown = function (e) {
+      //   document.onmousemove = function (e) {
+      //     var e = e || window.event,
+      //       page = pagePos(e);
+      //     box.style.left = page.X + "px";
+      //     box.style.top = page.Y + "px";
+      //   };
+      //   box.onmouseup = function (e) {
+      //     document.onmousemove = null;
+      //   };
+      // };
+
+      // document.onmousemove = function (e) {
+      //   var e = e || window.event,
+      //     page = pagePos(e);
+      //   console.log(page);
+      //   box.style.left = page.X + "px";
+      //   box.style.top = page.Y + "px";
+      // };
+
+      // box.onmousedown = function (e) {
+      //   console.log(e);
+      //   var e = e || window.event;
+      //   console.log(getStyles(box, "left"));
+      //   x = pagePos(e).X - getStyles(box, "left");
+      //   y = pagePos(e).Y - getStyles(box, "top");
+      //   console.log(x, y);
+      //   document.onmousemove = function (e) {
+      //     var e = e || window.event;
+      //     box.style.left = pagePos(e).X - x + "px";
+      //     box.style.top = pagePos(e).Y - y + "px";
+      //   };
+      //   document.onmouseup = function (e) {
+      //     this.onmousemove = null;
+      //     this.onmouseup = null;
+      //   };
+      // };
+
+      //封装拖拽函数
+      function elemDrag(elem) {
+        var x, y;
+        addEvent(elem, "mousedown", function (e) {
+          cancelBubble(e);
+          preventDefaultEvent(e);
+          var e = e || window.event,
+            x = pagePos(e).X - getStyles(elem, "left"),
+            y = pagePos(e).Y - getStyles(elem, "top"),
+            w = getStyles(elem, "width"),
+            h = getStyles(elem, "height"),
+            xr = w - x,
+            yb = h - y,
+            viewW = getViewportSize().width,
+            viewH = getViewportSize().height,
+            maxLeft = viewW - w,
+            maxTop = viewH - h;
+
+          addEvent(document, "mousemove", mousemove);
+          addEvent(document, "mouseup", mouseup);
+          console.log(getViewportSize());
+          function mousemove(e) {
+            var e = e || event;
+
+            if (e.clientX < x) {
+              elem.style.left = 0;
+            } else if (e.clientX >= viewW - xr) {
+              // console.log(e.clientX);
+              // console.log("viewW", viewW);
+              // console.log("width", w);
+              // console.log("maxLeft", maxLeft);
+              elem.style.left = maxLeft + "px"; //！！一定要有px
+              // console.log("left", elem.style.left);
+            } else {
+              elem.style.left = pagePos(e).X - x + "px";
+            }
+
+            if (e.clientY < y) {
+              elem.style.top = 0;
+            } else if (e.clientY >= viewH - yb) {
+              elem.style.top = maxTop + "px";
+            } else {
+              elem.style.top = pagePos(e).Y - y + "px";
+            }
+
+            // elem.style.left =
+            //   e.clientX >= getViewportSize() - xr
+            //     ? e.clientX - x
+            //     : pagePos(e).X - x + "px";
+            // elem.style.top = pagePos(e).Y - y + "px";
+          }
+          function mouseup() {
+            console.log(this);
+            removeEvent(document, "mousemove", mousemove);
+            removeEvent(document, "mouseup", mouseup);
+          }
+        });
+      }
+      elemDrag(box);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //模拟bind
+      //bind 挂在哪里  Function.prototype //所有js引擎内置的函数，源代码是对外不可见的（native code） 引擎是开源的可以在github上看  但是是c++写的（V8引擎）
+
+      //call apply 模拟bind函数
+
+      var p = { age: 18 };
+      function Person(name, sex) {
+        console.log(this);
+        console.log(this.age);
+        console.log(name, sex);
+      }
+
+      // Person.call(p)
+      // Person.apply(p)
+      // Person.bind(p)
+      // var person2=Person.call(p)
+      // new Person2()//报错
+      var person2 = Person.bind(p); //这里bind改变的是Person函数里指向window的这个this
+      // person2();//->{age:18}
+      new person2(); //等同于new Person；new的时候bind失效  {},new的时候会出现一个新的this对象
+      //new Person{this->指向实例对象}
+
+      //bind两个特点：1，不执行。2，实例化失效
+      //更改this指向，更改执行期上下文context
+      Function.prototype.bindy = function (context) {
+        var _self = this, //函数，函数调用的bindy
+          args = Array.prototype.slice.call(arguments, 1),
+          tempFn = function () {}; //圣杯模式
+        console.log(args);
+        var fn = function () {
+          var newArgs = Array.prototype.slice.call(arguments);
+          _self.apply(
+            //要new 了之后才有instanceof 否则就是普通函数，new p2()出来的this本身Object的实例，所以用了fn.prototype=this.prototype使得fn的prototype指向了Person.prototype
+            this instanceof _self ? this : context,
+            args.concat(newArgs)
+          );
+        };
+        tempFn.prototype = this.prototype;
+        fn.prototype = new tempFn();
+        return fn;
+      };
+      Person.bindy(p, "zhangsan ")("male");
+      var p2 = Person.bind(p, "zhangsan");
+      new p2("male");
+    </script>
+  </body>
+</html>

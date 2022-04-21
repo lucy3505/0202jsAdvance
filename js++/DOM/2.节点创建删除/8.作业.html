@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+      // 1 hasChildNodes 这个是判断有没有子节点  写一个hasChildren 判断有没有元素节点  写在原型链上
+
+      //2 在原型上变成
+          寻找兄弟元素节点
+          参数N为正，我之后的第N个
+          参数N为负，我之前的第N个
+          参数N为0，找到自己
+
+
+      //3遍历父级元素下面所有的子元素节点
+
+      //原型上封装insertAfter方法
+        //本身是有insertBefore
+      Element.prototype.insertAfter=function(target,afterNode){
+
+      }
+
+      //子元素逆序
+    </script>
+  </body>
+</html>

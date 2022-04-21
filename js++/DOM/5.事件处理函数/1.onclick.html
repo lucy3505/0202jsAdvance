@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 100px;
+        width: 100px;
+        background-color: green;
+      }
+      button {
+        outline: none;
+      }
+      .loading {
+        background-color: #ddd;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <button>加载更多</button>
+    <button onclick="test()">加载更多2</button>
+    <script>
+      //事件是元素天生就具备的功能  点击  拖拽等
+
+      //我们绑定绑定的是事件的处理函数  而不是绑定事件本身
+
+      oDiv = document.getElementsByTagName("div")[0];
+
+      oDiv.onclick = function () {
+        this.style.backgroundColor = "orange";
+      };
+      //事件+事件的反馈=前端交互  交互体验  前端的核心就是交互
+
+      ///如何绑定事件处理函数
+      //elem.onclick=function(){}
+      var oBtn = document.getElementsByTagName("button")[0];
+      var oBtn2 = document.getElementsByTagName("button")[1];
+      oBtn.onclick = function () {
+        this.innerHTML = "加载中...";
+        this.className = "loading";
+        var _self = this;
+        setTimeout(function () {
+          _self.innerHTML = "加载更多";
+          _self.className = "";
+        }, 2000);
+      };
+      oBtn.onclick = function () {
+        console.log("加载更多数据");
+      };
+      //.onclick这种绑定的方法优点是兼容性好，缺点是一个元素只能绑定一个处理函数，没办法给一个元素绑定多个处理函数
+      //也可以直接在button标签上直接绑定
+      // <button onclick="test()">加载更多2</button>内联事件监听器  这个方法和  oBtn.onclick = function () {是一样的
+
+      function test() {
+        console.log("test");
+      }
+      oBtn2.onclick = function () {
+        console.log("test2"); //js的事件会覆盖掉内联事件
+      };
+
+      //elem.addEventListener(事件类型，事件处理函数，false)
+      oBtn.addEventListener("click", function () {
+        this.innerHTML = "加载中";
+      });
+    </script>
+  </body>
+</html>

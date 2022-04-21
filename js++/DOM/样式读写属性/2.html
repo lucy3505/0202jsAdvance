@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      var div = document.getElementsByTagName("div")[0];
+
+      // 查看计算样式  会用绝对值来显示  如果用rem em会给你换算成px
+      // 属性没设置就是默认值，设置了就是绝对值
+      //window.getComputedStyle(elem,null)[prop]
+      //ie8及以下不支持：elem.currentStyle
+
+      function getStyles(elem, prop) {
+        if (window.getComputedStyle) {
+          if (prop) {
+            return window.getComputedStyle(elem, null)[prop];
+          } else {
+            return window.getComputedStyle(elem, null);
+          }
+        } else {
+          if (prop) {
+            return window.currentStyle[prop];
+          } else {
+            return window.currentStyle;
+          }
+        }
+      }
+
+      //div.offsetWidth =>200  offsetWidth/Height 使用底层去计算宽高  能得到css加进去的大小  但是这个也会把padding值算进去
+      //div.style.width=""  //这个是去访问style样式表  所以得不到css样式
+
+      //js运动
+    </script>
+  </body>
+</html>

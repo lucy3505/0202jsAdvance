@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      11
+
+      <p>222</p>
+      <input name="username" />
+    </div>
+    <script>
+      //dom操作深入
+      //1.getElementsById()
+      //Document.prototype才有 HTMLDocument.prototype，Element.prototype,HTMLElement.prototype没有
+
+      var div = document.getElementsByTagName("div")[0];
+      //这个div dom对象是通过 new HTMLDivElement->HTMLElement->Element构造成这个div元素对象
+      // div.getElementById 没法用  因为
+
+      //Element.prototype HTMLElement.prototype没有getElementById
+
+      //2.getElementsByName  也是和getElementsById一样  Document.prototype才有 HTMLDocument.prototype，Element.prototype,HTMLElement.prototype没有
+      // div.getElementsByName("username");//报错
+      var username = document.getElementsByName("username");
+      console.log(username);
+
+      //3.getElementsByTagName  都能用
+          // getElementsByClassName
+          // querySelector querySelectorAll
+        //Document.prototype Element.prototype都有
+      var p=document.getElementsByTagName("p")[0]
+    </script>
+  </body>
+</html>

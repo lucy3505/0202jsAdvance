@@ -1,0 +1,15 @@
+.box {
+  height: 300px;
+  width: 400px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  /* margin-left: 20px; */
+  overflow: hidden;
+  position: absolute;
+  left: 60px;
+}
+.drag-hd {
+  height: 44px;
+  background-color: rgb(19, 189, 19);
+  width: 100%;
+}

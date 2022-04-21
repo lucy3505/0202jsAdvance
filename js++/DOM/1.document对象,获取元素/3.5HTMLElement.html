@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>123</div>
+    <p>333</p>
+
+    <script>
+      console.log(Element);
+      Element.prototype.aaa = "aaa";
+      HTMLElement.prototype.bbb = "bbb";
+      HTMLDivElement.prototype.ccc = "ccc";
+      var div = document.getElementsByTagName("div")[0];
+      var p = document.getElementsByTagName("p")[0];
+      console.log(div.ccc); //"ccc"
+      console.log(div.bbb); //"bbb"
+
+      console.log(p.aaa); //"aaa"
+      console.log(p.bbb); //"bbb"
+      console.log(p.ccc); //undefined
+      //p是继承HTMLParagraphElement
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    li span {
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <form>
+      <input type="text" name="content" />
+      <input value="提交" id="submit" type="submit" />
+    </form>
+
+    <ul></ul>
+  </body>
+  <script>
+    (function (document) {
+      var input = document.getElementsByTagName("input")[0];
+      var oSubmit = document.getElementById("submit");
+      var oUl = document.getElementsByTagName("ul")[0];
+      init();
+      function init() {
+        bindEvent();
+      }
+      function bindEvent() {
+        oSubmit.addEventListener("click", handleSubmit, false);
+
+        oUl.addEventListener("click", handleClick, false);
+      }
+
+      function handleSubmit(e) {
+        e.preventDefault();
+        var oLi = document.createElement("li");
+        oLi.innerHTML = `<strong>${input.value}</strong> <span class='edit'>编辑</span><span class='delete'>删除</span>`;
+
+        oUl.appendChild(oLi);
+        input.value = "";
+      }
+
+      function handleClick(e) {
+        var e = e || window.event,
+          tar = e.target,
+          par = tar.parentNode;
+        var liList = elemChildren(oUl);
+        var index = Array.prototype.indexOf.call(liList, par);
+        // debugger;
+        console.log("index:", index);
+        console.log("tar ", tar);
+        if (tar.className === "edit") {
+          var li = liList[index];
+          handleEdit.call(li);
+        }
+        if (tar.className === "delete") {
+          var li = liList[index];
+          handleDelete.call(li);
+        }
+      }
+      function handleEdit(e) {
+        console.log(this);
+        console.log("v");
+        input.value = this.childNodes[0].innerText;
+      }
+
+      function handleDelete(e) {
+        var liList = elemChildren(oUl);
+        // const res = liList.splice(this, 1);
+        // console.log(liList);
+        console.log(this);
+        // this.style.display = "none";
+        // oUl.removeChild(this);
+        this.remove();
+        if (oUl.children.length === 0) {
+          input.value = "";
+        }
+      }
+      function elemChildren(node) {
+        var temp = {
+            length: 0,
+            push: Array.prototype.push,
+            splice: Array.prototype.splice,
+          },
+          len = node.childNodes.length;
+
+        for (var i = 0; i < len; i++) {
+          var childItem = node.childNodes[i];
+          if (childItem.nodeType === 1) {
+            temp.push(childItem);
+          }
+        }
+        return temp;
+      }
+    })(document);
+  </script>
+</html>

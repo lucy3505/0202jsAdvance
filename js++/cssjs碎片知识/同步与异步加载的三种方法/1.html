@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <script type="text/script"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div>1112</div>
+
+    <script type="text/javascript">
+      exec_util_width_loading_script("utils.js", "test");
+      function exec_util_width_loading_script(url, fn) {
+        var s = document.createElement("script");
+        var oScript = document.getElementsByTagName("script")[0];
+        s.type = "text/javascript";
+
+        //兼容判断
+        if (s.readyState) {
+          console.log(s);
+          s.onreadyStatechange = function () {
+            var state = s.readyState;
+            if (state === "complete" || state === "loaded") {
+              utils[fn]();
+            }
+          };
+        } else {
+          console.log("first", s);
+          s.onload = function () {
+            console.log("onload", s);
+            utils[fn]();
+          };
+        }
+
+        s.src = url;
+
+        oScript.parentNode.insertBefore(s, oScript);
+      }
+    </script>
+  </body>
+</html>

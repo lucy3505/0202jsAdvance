@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      [href="http://www.baidu.com"]
+      {
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+      [href="http://www.taobao.com"]
+      {
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="http://www.baidu.com">
+      百度<a href="http://www.taobao.com">淘宝</a></a
+    >
+
+    <script>
+      //原则上内联元素不能内联元素  a套a 理论上是不行的  解析出来的是两个内联元素a  显示出来的时候是没有嵌套关系的  就算把a标签变成块级元素了  也不会显示成嵌套关系  渲染出来的都是两个不同的a标签
+      //那把两个都变成块级元素呢  仍然是两个标签  这个是a标签的一个特殊的现象，虽然是嵌套关系且都是块级  仍然是两个无法嵌套
+    </script>
+  </body>
+</html>

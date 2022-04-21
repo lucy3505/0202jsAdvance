@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //浏览器可视区域的尺寸（窗口的宽高），html显示的窗口，不包括控制台等
+      // 常规：window.innerWidth/innerHeight
+      //IE9/IE8及以下：
+      //标准模式下(w3c)：document.documentElement.clientWidth/clientHeight
+      //怪异(没有<!DOCTYPE html>情况下)：document.body.clientWidth/clientHeight
+      //outerWidth outerHeight 包括了控制台等
+      //封装
+      function getViewportSize() {
+        if (window.innerWidth) {
+          return {
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
+        } else {
+          if (document.compatMode === "BackCompat") {
+            return {
+              width: document.body.clientHeight,
+              height: document.body.clientWidth,
+            };
+          } else {
+            //下面这个可能会包括滚动条  但是没影响
+            return {
+              width: document.documentElement.clientWidth,
+              height: document.documentElement.clientHeight,
+            };
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

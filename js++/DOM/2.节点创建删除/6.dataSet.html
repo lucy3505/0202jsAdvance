@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p data-name="aixiaoye" data-age="18">我叫矮小也</p>
+    <a data-uri="txwz" data-sort="free">天下无责</a>
+    <a data-uri="fczlm" data-sort="pay">复仇者联盟</a>
+    <a data-uri="oll" data-sort="free">欧罗拉</a>
+    <a data-uri="plmxx" data-sort="pay">普罗米休息</a>
+
+    <script>
+      //html5 给元素增加了一个data-*属性
+      var p = document.getElementsByTagName("p")[0];
+      // p.dataset=》{age:"18",name:"aixiaoye"}
+      //自定义属性可以通过dataset去取  要写成data-
+
+      //getAttribute("data-name")也能取   只不过用data-name可以这样取值 p.dataset.name  。。dataset要ie9以上才兼容  手机都兼容
+
+      var links = document.getElementsByTagName("a");
+      for (var i = 0; i < links.length; i++) {
+        (function (k) {
+          links[k].onclick = function () {
+            var sort = this.dataset.sort;
+            var uri = this.dataset.uri;
+            if (sort === "free") {
+              window.open("http://baidu.com/" + uri);
+            } else {
+              alert("这个要付费");
+            }
+          };
+        })(i);
+      }
+    </script>
+  </body>
+</html>

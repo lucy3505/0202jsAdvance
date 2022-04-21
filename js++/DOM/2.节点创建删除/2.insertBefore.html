@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <!-- <h1></h1>
+      <a></a> -->
+      <h1>标题标签</h1>
+      <p>我是段落标签</p>
+      <a>我是超链接标签</a>
+    </div>
+    <script>
+      //c.insertBefore(a,b)
+      //插入:在父级c节点下的子节点b之前插入a节点
+      // var div = document.getElementsByTagName("div")[0];
+      // var p = document.getElementsByTagName("p")[0];
+      // var a = document.createElement("a");
+      // a.href = "";
+      // div.insertBefore(a, p);
+      // var h1 = document.createElement("h1");
+      // h1.innerHTML = "我是标题标签";
+      // div.insertBefore(h1, a);
+
+      //父节点.removeChild(子节点)  也是在Node.prototype下
+      var div = document.getElementsByTagName("div")[0];
+      var p = document.getElementsByTagName("p")[0];
+      var rp = div.removeChild(p); //返回的是p标签元素  相当于剪切了这个p元素 还是能把这个元素返回回来的 并没有销毁 只能删掉在dom结构里的节点,不能删除存在内存里的这个p对象
+
+      //要真正的销毁？
+      // p.remove()//这个可以删除掉这个对象本身
+
+      // function getElementsByTagName(element){
+      //   1.从HTML中把p元素选择出来
+      //   2.new HTMLParagraphElement()=>DOM节点，DOM元素
+      // }
+    </script>
+  </body>
+</html>

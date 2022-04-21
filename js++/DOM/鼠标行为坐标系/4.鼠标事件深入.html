@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      /* height: 2000px;
+      width: 2000px; */
+    }
+    a {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  <body>
+    <a href="javascript:;"></a>
+    <script src="./utils.js"></script>
+    <script src="./4.index.js"></script>
+    <script src="./4.index1.js"></script>
+    <!-- <script>
+      var oLink = document.getElementsByTagName("a")[0];
+      dragNclick(oLink, function () {
+        window.open("http://baidu.com");
+      });
+    </script> -->
+    <script>
+      var oLink = document.getElementsByTagName("a")[0];
+      oLink.dragNclick(function () {
+        window.open("http://baidu.com");
+      });
+    </script>
+  </body>
+</html>

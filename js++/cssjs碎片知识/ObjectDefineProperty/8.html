@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button.current {
+        background-color: orange;
+      }
+      button {
+        width: 50px;
+        height: 20px;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="result">0</div>
+      <div class="input-group">
+        <input type="text" class="f-input" value="0" />
+        <input type="text" class="s-input" value="0" />
+      </div>
+      <div class="btn-group">
+        <button class="current" data-field="plus">+</button>
+        <button data-field="minus">-</button>
+        <button data-field="mul">*</button>
+        <button data-field="div">/</button>
+      </div>
+    </div>
+    <script src="8.js"></script>
+  </body>
+</html>

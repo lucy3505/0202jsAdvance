@@ -1,0 +1,107 @@
+.wrap {
+  position: relative;
+  height: 500px;
+  width: 500px;
+  margin: 50px auto;
+  box-shadow: 0 0 5px #999;
+  border-radius: 10px;
+}
+
+.list-hd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 44px;
+}
+
+.list-hd .fa-plus {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #fff;
+}
+.input-wrap {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #ddd;
+  top: 44px;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+}
+.input-wrap .input-bd {
+  float: left;
+  width: 410px;
+  height: 100%;
+  padding: 5px 5px 5px 10px;
+}
+
+.input-wrap .input-bd input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ddd;
+}
+.input-wrap .btn-bd {
+  float: left;
+  width: 90px;
+  height: 100%;
+  /* border: 1px solid #000; */
+  padding: 5px 10px 5px 5px;
+}
+
+.input-wrap .btn-bd button {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.list-wrap {
+  padding-top: 44px;
+  height: 500px;
+  overflow: auto;
+}
+.list-wrap .item {
+  position: relative;
+  height: 50px;
+  cursor: pointer;
+}
+.list-wrap .item.active {
+  background-color: #dff0d8 !important;
+}
+.list-wrap .item:nth-child(odd),
+.list-wrap .item:hover {
+  background-color: #eee;
+}
+.list-wrap .item .item-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+  height: 100%;
+  /* border: 1px solid #000; */
+  line-height: 50px;
+  text-indent: 15px;
+}
+
+.list-wrap .item .btn-group {
+  height: 100%;
+  margin-left: 400px;
+  line-height: 50px;
+}
+.list-wrap .item .btn-group a {
+  margin-left: 15px;
+}
+.list-wrap .item .btn-group .edit-btn {
+  color: green;
+}
+.list-wrap .item .btn-group .remove-btn {
+  color: red;
+}

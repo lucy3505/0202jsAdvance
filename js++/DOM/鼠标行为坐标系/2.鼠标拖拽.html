@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        width: 5000px;
+        height: 2000px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script src="./utils.js"></script>
+    <script>
+      //pageX版本
+      var box = document.getElementsByClassName("box")[0],
+        x,
+        y;
+      //封装拖拽函数
+      function elemDrag(elem) {
+        var x, y;
+        addEvent(elem, "mousedown", function (e) {
+          cancelBubble(e);
+          preventDefaultEvent(e);
+          var e = e || window.event,
+            x = pagePos(e).X - getStyles(elem, "left"),
+            y = pagePos(e).Y - getStyles(elem, "top"),
+            w = getStyles(elem, "width"),
+            h = getStyles(elem, "height"),
+            xr = w - x,
+            yb = h - y,
+            pageW = getScrollSize().width,
+            pageH = getScrollSize().height,
+            maxLeft = pageW - w,
+            maxTop = pageH - h,
+            viewW = getViewportSize().width,
+            viewH = getViewportSize().height,
+            maxViewLeft = viewW - w,
+            maxViewTop = viewH - h;
+
+          addEvent(document, "mousemove", mousemove);
+          addEvent(document, "mouseup", mouseup);
+          // addEvent(window, "scroll", scroll);
+          console.log(getViewportSize());
+          function scroll(e) {
+            var l = getScrollOffset().left;
+            console.log(l);
+
+            // if (e.pageX < x) {
+            //   window.scrollTo(0, 0);
+            // } else if (e.pageX >= viewW - xr) {
+            //   // elem.style.left = maxLeft + "px"; //！！一定要有px
+            //   window.scrollTo(2, 0);
+            // } else {
+            //   // elem.style.left = pagePos(e).X - x + "px";
+            // }
+          }
+
+          function mousemove(e) {
+            var e = e || event;
+            console.log(e.pageX);
+            console.log(viewW, xr, viewW - xr);
+            // if (e.pageX < viewH) {
+            //   window.scrollTo(0, 0);
+            // } else
+            window.scrollTo(e.pageX - viewW + xr, 0);
+            //  if (e.pageX >= viewW - xr) {
+            //   // elem.style.left = maxLeft + "px"; //！！一定要有px
+            //   console.log("----", e.pageX);
+            //   window.scrollTo(e.pageX - viewW + xr, 0);
+            // } else {
+            //   // elem.style.left = pagePos(e).X - x + "px";
+            // }
+            if (e.pageX < x) {
+              elem.style.left = 0;
+            } else if (e.pageX >= pageW - xr) {
+              elem.style.left = maxLeft + "px"; //！！一定要有px
+            } else {
+              elem.style.left = pagePos(e).X - x + "px";
+            }
+
+            if (e.pageY < y) {
+              elem.style.top = 0;
+            } else if (e.pageY >= pageH - yb) {
+              elem.style.top = maxTop + "px";
+            } else {
+              elem.style.top = pagePos(e).Y - y + "px";
+            }
+
+            // elem.style.left =
+            //   e.pageX >= getViewportSize() - xr
+            //     ? e.pageX - x
+            //     : pagePos(e).X - x + "px";
+            // elem.style.top = pagePos(e).Y - y + "px";
+          }
+          function mouseup() {
+            console.log(this);
+            removeEvent(document, "mousemove", mousemove);
+            removeEvent(document, "mouseup", mouseup);
+          }
+        });
+      }
+      elemDrag(box);
+    </script>
+  </body>
+</html>

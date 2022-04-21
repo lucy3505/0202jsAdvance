@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="list"></ul>
+    <script>
+      // document.createDocumentFragment();
+      //创建文档片段(碎片)
+      var oUl = document.getElementById("list");
+      var oDiv = document.createElement("div");
+      var oFrag = document.createDocumentFragment();
+      for (var i = 0; i < 10000; i++) {
+        var oLi = document.createElement("li");
+        oLi.innerHTML = i + ". 这是第" + i + "个项目";
+        oLi.classList = "list-item";
+        //oLi.setAttribute("class","list-item")
+        oUl.appendChild(oLi); //每次都要重新计算几何数据  回流 大量消耗渲染引擎性能
+        //可以创建一个不在节点树上节点  最后在append到节点树上 但是这个多了个div 可以不创建dom节点  创建文档片段  是节点 但不在节点树上
+        oDiv.appendChild(oLi);
+        oFrag.appendChild(oLi);
+      }
+      oUl.appendChild(oFrag);
+
+      //还有一种是字符串拼接  innerHtml
+  //      for (var i = 0; i < 10000; i++) {
+  //      list+="<li>"+i+"</li>"
+  //     }
+  //  oUl.innerHTML=list
+
+    </script>
+  </body>
+</html>

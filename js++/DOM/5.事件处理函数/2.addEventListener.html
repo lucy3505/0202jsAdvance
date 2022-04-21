@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 100px;
+        width: 100px;
+        background-color: green;
+      }
+      button {
+        outline: none;
+      }
+      .loading {
+        background-color: #ddd;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <button>加载更多</button>
+
+    <script>
+      var oBtn = document.getElementsByTagName("button")[0];
+
+      //IE9以下不兼容，w3c规范
+      oBtn.addEventListener(
+        "click",
+        function () {
+          this.innerHTML = "加载中...";
+          this.className = "loading...";
+          var self = this;
+          setTimeout(function () {
+            self.innerHTML = "加载更多";
+            self.className = "";
+          }, 2000);
+        },
+        false
+      );
+
+      oBtn.addEventListener(
+        "click",
+        function () {
+          console.log("加载更多数据");
+        },
+        false
+      );
+
+      //只会打印一个1，因为指向同一个处理函数引用
+      oBtn.addEventListener("click", test, false);
+      oBtn.addEventListener("click", test, false);
+      function test() {
+        console.log(1);
+      }
+
+      //ie8及以下的绑定方法
+      //elem.attachEvent(事件类型，事件处理函数)
+      // oBtn.attachEvent("onclick",function(){
+      //   //this->window
+      //   oBtn.innerHTML="记载中..."
+      //   oBtn.className="loading"
+      //   setTimeout(function(){
+      //     oBtn.innerHTML="记载更多"
+      //     oBtn.className=""
+      //   },2000)
+      // })
+      // //attachEvent不管函数引用  绑定几次就执行几次
+      // oBtn.attachEvent("onclick",test)
+      // oBtn.attachEvent("onclick",test)
+    </script>
+  </body>
+</html>

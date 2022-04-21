@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <script src="./utils.js"></script>
+    <script>
+      var div = document.getElementsByClassName("box")[0];
+      //鼠标行为->坐标系
+      //clientX/Y 鼠标位置相对于当前可视区域的坐标
+      //layerX/Y   同pageX/Y相同  ie11以下同clientX/Y
+      //screenX/Y  鼠标位置相对于屏幕的坐标
+      //x/y 同clientY意昂  Firefox不支持
+      //pageX/pageY  鼠标位置相对于当前文档的坐标（包含滚动条的距离）ie9以下不支持(jQuery)
+      //offsetX/Y 鼠标位置相对于块元素的坐标（包含边框  safari不包括边框）
+      document.onclick = function (e) {
+        var e = e || window.event;
+        // console.log(e.clientY, e.pageY);
+        // console.log(e.screenY, e.pageY);
+        // console.log(e.y, e.pageY);
+        console.log(e.pageY, pagePos(e).Y);
+      };
+
+      //封装兼容 pageX/Y
+      function pagePos(e) {
+        var sLeft = getScrollOffset().left,
+          sTop = getScrollOffset().top,
+          cLeft = document.documentElement.clientLeft || 0,
+          cTop = document.documentElement.clientTop || 0;
+        //document.documentElement.clientTop是用来获取文档偏移的  但有些浏览器是没这个属性值的，这个时候就赋值成0
+        return {
+          X: e.clientX + sLeft - cLeft,
+          Y: e.clientY + sTop - cTop,
+        };
+      }
+    </script>
+  </body>
+</html>

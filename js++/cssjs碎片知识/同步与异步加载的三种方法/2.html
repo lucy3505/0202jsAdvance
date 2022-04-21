@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/script"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div>1112</div>
+    <script src="utils.js"></script>
+    <script type="text/javascript">
+      var s = document.createElement("script");
+      s.type = "text/javascript";
+      // s.async = true;
+      s.src = "utils.js"; //! 这个时候就开始下载文件了 .src的时候
+      document.body.appendChild(s); //这个时候才执行，就变成了异步的,这个企业级的异步加载，主动创建就变成异步的，
+      /**但是会阻塞window.onload=function(){}
+       * window.onload使会等所有资源加载完才执行，所以Onload是很慢的，异步加载会阻塞onload
+       *
+       * 可以在onload以后去异步加载
+       **/
+
+      // function async_load() {
+      //   var s = document.createElement("script");
+      //   s.type = "text/javascript";
+      //   // s.async = true;
+      //   s.src = "utils.js"; //这个时候就开始下载文件了 .src的时候
+      //   document.body.appendChild(s);
+      // }
+      // if (window.attachEvent) {
+      //   //ie添加事件处理函数的方法,这里是用来兼容ie
+      //   window.attachEvent("onload", async_load); //onload以后添加异步加载方法
+      // } else {
+      //   window.addEventListener("load", async_load, false);
+      // }
+
+      //写在立即执行函数里,企业里异步加载一般都放在上面<head>里 异步的都往上面扔
+      (function () {
+        function async_load() {
+          var s = document.createElement("script");
+          oScript = document.getElementsByTagName("script")[0];
+          s.type = "text/javascript";
+          // s.async = true;
+          s.src = "utils.js"; //这个时候就开始下载文件了 .src的时候
+          // document.body.appendChild(s);
+          oScript.parentNode.insertBefore(s, oScript);
+        }
+        if (window.attachEvent) {
+          //ie添加事件处理函数的方法,这里是用来兼容ie
+          window.attachEvent("onload", async_load); //onload以后添加异步加载方法
+        } else {
+          window.addEventListener("load", async_load, false);
+        }
+      })();
+    </script>
+  </body>
+</html>

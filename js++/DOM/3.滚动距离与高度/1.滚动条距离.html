@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+  <body>
+    <div style="height: 400px; border: 1px solid #000"></div>
+    <button>点击</button>
+    <!-- <div style="width: 5000px; border: 1px solid #000"></div> -->
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <script>
+      //查看滚动条的距离
+      //常规:window.pageXOffset/pageYOffset
+      //IE9/IE8及以下：
+      //document.body.scrollLeft/scrollTop
+      //document.documentElement.scrollLeft/scrollTop
+
+      //不常见:window.scrollX/scrollY
+      console.log(window.pageYOffset);
+      var oBtn = document.getElementsByTagName("button")[0];
+      oBtn.onclick = function () {
+        window.scrollTo(0, 400); //滚动400的距离
+      };
+      //理解滚动条的距离，不能理解成滚动条到顶部的距离(不能看成是物理距离)，有一定比例的缩放，要看正在网页上跑的距离
+
+      //封装兼容
+      function getScrollOffset() {
+        if (window.pageXOffset) {
+          return {
+            left: window.pageXOffset,
+            top: window.pageYOffset,
+          };
+        } else {
+          return {
+            left:
+              document.body.scrollLeft + document.documentElement.scrollLeft,
+            top: document.body.scrollTop + document.documentElement.scrollTop,
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

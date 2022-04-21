@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>领取优惠券</button>
+    <script>
+      var oBtn = document.getElementsByTagName("button")[0];
+
+      //解除事件处理函数
+      // element.onclick = null / false;
+      // element.removeEventListener("click", test, false);
+      // el.detachEvent("onclick", test);
+
+      oBtn.onclick = function () {
+        this.className = "got";
+        this.innerHTML = "已领取";
+        this.onclick = null;
+      };
+
+      oBtn.addEventListener("click", test, false);
+
+      function arguments.calleetest() {
+        this.className = "got";
+        this.innerHTML = "已领取";
+        this.removeEventListener("click", test, false); //用匿名函数的话就没办法拿到函数的引用，所以要把函数抽离出来
+      }
+
+      //就要在里面拿到函数的引用
+      oBtn.addEventListener(
+        "click",
+        function () {
+          // console.log(arguments.callee);//在非严格模式下是可以  arguments.callee可以拿到正在执行的函数本身
+          this.className = "got";
+          this.innerHTML = "已领取";
+          this.removeEventListener("click", arguments.callee, false);
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

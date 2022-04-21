@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div style="width: 600px; background-color: #ccc"></div>
+
+	<script type="text/javascript">
+		var oDiv = document.getElementsByTagName('div')[0];
+
+        var imgSrcArr = [
+          'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552070529941&di=02dca292773448320307d0df606d4575&imgtype=0&src=http%3A%2F%2Ffile.xdf.cn%2Fuploads%2F180730%2F1217_20180730141719.jpg',
+
+          'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552071234957&di=6a2e87f8899aac54fed1a53697d0e63f&imgtype=0&src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F267f9e2f070828386aeb7516b099a9014d08f1ca.jpg',
+
+          'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552071253563&di=2727f2f0a94b18c9bbe2dae6af8f498a&imgtype=0&src=http%3A%2F%2F00.minipic.eastday.com%2F20170823%2F20170823144739_d41d8cd98f00b204e9800998ecf8427e_1.jpeg',
+
+          'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552071264743&di=93ec4a56891f5ab9adce4be19d75eb7b&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2017-12-16%2F5a34d404c8369.jpg'
+        ];
+
+        var oFrag = document.createDocumentFragment();
+
+        imgSrcArr.forEach(function(elem){
+          var oImg = new Image();
+          oImg.src = elem;
+          oImg.style.width = '100%';
+
+          oImg.onload = function(){
+          	oFrag.appendChild(oImg);
+          }
+        });
+        
+        oDiv.appendChild(oFrag);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

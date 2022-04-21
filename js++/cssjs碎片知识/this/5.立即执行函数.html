@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">点击</button>
+    <script>
+      var initModule = (function () {
+        return {
+          a: 1,
+          b: 2,
+          plus: function () {
+            return this.a + this.b;
+          },
+        };
+      })();
+
+      console.log(initModule.plus());
+
+      var initModule2 = (function () {
+        return {
+          plus: function (a, b) {
+            return a + b;
+          },
+        };
+      })();
+      console.log(initModule.plus(3, 5));
+
+      (function () {
+        function Test(a, b) {
+          this.a = a;
+          this.b = b;
+          this.oBtn = document.getElementById("btn");
+        }
+        Test.prototype = {
+          init: function () {
+            this.bindEvent();
+          },
+          bindEvent() {
+            this.oBtn.addEventListener(
+              "click",
+              // () => {
+              //   this.plus();
+              // },
+              this.plus.bind(this),
+              false
+            );
+          },
+          plus() {
+            console.log(this); //指向Test的实例对象
+            console.log(this.a + this.b);
+            return this.a + this.b;
+          },
+        };
+        window.Test = Test;
+      })();
+      var test = new Test(1, 3).init();
+      // console.log(test);
+    </script>
+  </body>
+</html>

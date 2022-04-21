@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: red;
+}
+.tab-wrap {
+  margin: 50px auto;
+  width: 300px;
+}
+.tab-wrap .tab {
+  display: flex;
+  height: 50px;
+}
+.tab-item {
+  width: 100px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+.tab-item.active {
+  background-color: #000;
+  color: #fff;
+}
+.page {
+  position: relative;
+  width: 300px;
+}
+.page .page-item {
+  height: 500px;
+  font-size: 50px;
+  border: 1px solid #000;
+  text-align: center;
+  display: none;
+}
+.page .page-item.active {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  /* background-color: #000; */
+  display: block;
+  width: 100%;
+}

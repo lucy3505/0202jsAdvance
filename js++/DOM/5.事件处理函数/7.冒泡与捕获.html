@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        width: 300px;
+        height: 300px;
+        background-color: green;
+      }
+      .wrapper .outer {
+        width: 200px;
+        height: 200px;
+        margin-left: 300px;
+        background-color: red;
+      }
+      .wrapper .outer .inner {
+        width: 100px;
+        height: 100px;
+        margin-left: 200px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+    </div>
+
+    <script>
+      var wrapper = document.getElementsByClassName("wrapper")[0],
+        outer = document.getElementsByClassName("outer")[0],
+        inner = document.getElementsByClassName("inner")[0];
+      wrapper.addEventListener(
+        "click",
+        function () {
+          console.log("bubble wrapper");
+        },
+        false
+      );
+      outer.addEventListener(
+        "click",
+        function () {
+          console.log("bubble outer");
+        },
+        false
+      );
+      inner.addEventListener(
+        "click",
+        function () {
+          console.log("bubble inner");
+        },
+        false
+      );
+
+      wrapper.addEventListener(
+        "click",
+        function () {
+          console.log("wrapper");
+        },
+        true
+      );
+      outer.addEventListener(
+        "click",
+        function () {
+          console.log("outer");
+        },
+        true
+      );
+      inner.addEventListener(
+        "click",
+        function () {
+          console.log("inner");
+        },
+        true
+      );
+
+      //子元素会向父级元素传递，事件是会传递的，一层一层向上传递事件的现象叫事件冒泡现象
+      //不能从视觉上去判断，要从dom结构上去看是不是父子结构，只要是嵌套结构，子元素事件就会向上冒泡，父元素如果有相同的事件类型就会触发，如果没有的话就不触发事件  但会继续向上传递事件
+
+      //如果在addEventListener后面写的是true  那就是事件捕获 false就是事件冒泡  事件冒泡和捕获正好是相反的  冒泡是:  inner outer wrapper  捕获是:wrapper outer inner
+      //事件捕获：首先必须是嵌套关系  自嵌套关系最顶层开始，直到事件源的事件执行完成
+
+      //先捕获 后冒泡  只不过事件源（被点击的那个元素）是不存在捕获或冒泡的 按绑定事件的先后顺序去执行
+
+      //focus blur change submit reset select是没有冒泡和捕获的
+      //ie是没有捕获的
+
+      //冒泡常常带来麻烦
+      //取消冒泡
+    </script>
+  </body>
+</html>

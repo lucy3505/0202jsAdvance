@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        width: 300px;
+        height: 300px;
+        background-color: green;
+        position: relative;
+      }
+      .apply {
+        width: 80px;
+        height: 30px;
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        color: #fff;
+        line-height: 30px;
+        text-align: center;
+        background-color: red;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- void(0) 等于-> return 0   这样写了以后就不会跳转了不会刷新页面了-->
+    <a href="javascript:void(0)">百度以下</a>
+    <!-- 下面这个写法和上面是一样的  还可以写成href="#" 写成#就会变成锚点  会回到最顶端-->
+
+    <a href="javascript:;">百度以下</a>
+    <script>
+      //取消默认事件 鼠标右键的点击
+      document.oncontextmenu = function (e) {
+        var e = e || window.event;
+        // console.log(1);
+        // return false; // 兼容性最好;  右键点击之后菜单不会出现 在addEventListener里面是无法使用的  只能用oncontextmenu这种具体的事件名称
+
+        //w3c方法  ie9及以下不兼容
+        // e.preventDefault();
+        //e.returnValue=false  ie9以下可以用
+        e.returnValue = false;
+      };
+      var a = document.getElementsByTagName("a")[0];
+      a.onclick = function (e) {
+        e.preventDefault();
+      };
+    </script>
+  </body>
+</html>

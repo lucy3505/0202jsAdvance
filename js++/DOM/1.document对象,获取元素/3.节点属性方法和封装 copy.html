@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box" id="box" style="background-color: green">
+      我是文本节点
+      <!-- 我是注释节点 -->
+      <h1>我是标题标签<span>11</span></h1>
+
+      <a href="">我是超链接</a>
+      <p>我是段落标签</p>
+    </div>
+    <script>
+      var div = document.getElementsByTagName("div")[0];
+
+      // var arr = [1, 2, 3];
+      // var obj = {
+      //   0: 1,
+      //   1: 2,
+      //   2: 3,
+      //   length: 3,
+      //   push: Array.prototype.push,
+      //   splice: Array.prototype.splice,
+      // };
+      // obj.push(4);
+      // console.log(obj);
+
+      function elemChildren(node) {
+        var temp = {
+            length: 0,
+            push: Array.prototype.push,
+            splice: Array.prototype.splice,
+          },
+          len = node.childNodes.length;
+        for (var i = 0; i < len; i++) {
+          var childItem = node.childNodes[i];
+          if (childItem.nodeType === 1) {
+            // temp[temp["length"]] = childItem;
+            // temp["length"]++;
+            temp.push(childItem);
+          }
+        }
+        return temp;
+      }
+      console.log(elemChildren(div));
+    </script>
+  </body>
+</html>

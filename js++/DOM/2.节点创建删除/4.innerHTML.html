@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      .title {
+        color: orange;
+      }
+      .area {
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="list"></ul>
+
+    <script>
+      //innerHTML innerText
+      //在 HTMLElement.prototype都有
+      //innerHTML还在Element.prototype里
+
+      var list = document.getElementById("list"),
+        item,
+        data = [
+          { title: "天下无双", area: "中国" },
+          { title: "天下无双1", area: "中国1" },
+          { title: "天下无双2", area: "中国2" },
+        ];
+      //innerHTML可以取值，赋值，追加值（用+="...")
+
+      for (var i = 0; i < data.length; i++) {
+        var item = data[i];
+        // console.log(item.title);
+        // var li = document.createElement("li"),
+        //   h2 = document.createElement("h2"),
+        //   p = document.createElement("p");
+        // h2.innerHTML = "电影名称: " + item.title;
+        // p.innerHTML = '地区: <span class="area">' + item.area + "</span>";
+        // li.appendChild(h2);
+        // li.appendChild(p);
+        // list.appendChild(li);
+        list.innerHTML +=
+          "<li>" +
+          "<h3>电影名称:" +
+          item.title +
+          "</h3>" +
+          "<p>地区：" +
+          item.area +
+          "</p>" +
+          "</li>";
+      }
+    </script>
+  </body>
+</html>

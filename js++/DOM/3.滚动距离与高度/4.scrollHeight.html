@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="width: 5000px; height: 5000px; border: 1px solid #000"></div>
+
+    <script>
+      //document.body.scrollHeight/scrollWidth
+      //document.documentElement.scrollHeight/scrollWidth  =5002
+
+      //就是不管你可视的多大，包括看不见的
+      //window.innerWidth+window.pageXOffset
+
+      //兼容封装
+      function getScrollSize() {
+        if (document.body.scrollWidth) {
+          return {
+            width: document.body.scrollWidth,
+            height: document.body.scrollHeight,
+          };
+        } else {
+          return {
+            width: document.documentElement.scrollWidth,
+            height: document.documentElement.scrollHeight,
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

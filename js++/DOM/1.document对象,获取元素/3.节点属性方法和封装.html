@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box" id="box" style="background-color: green">
+      我是文本节点
+      <!-- 我是注释节点 -->
+      <h1>我是标题标签</h1>
+      <a href="">我是超链接</a>
+      <p>我是段落标签</p>
+    </div>
+    <script>
+      //1元素节点-》1
+      //2属性节点=>2
+      //3文本节点=>3
+      //4注释节点=>4
+      //5document=>9
+      //DocumentFragment =>11
+
+      //nodeName ->元素节点的nodeName 大写 只读（不能修改） 节点的第一个属性
+      var div = document.getElementsByTagName("div")[0];
+      // document.nodeName=>"#document"
+      //div.nodeName=>"DIV"
+      var nodeName = div.nodeName.toLocaleLowerCase();
+      // div.firstChild.nodeName=>"#text"
+      // div.childNodes[1].nodeName=>"#comment"
+      //除了标签是大写的 其他就是#加上node名
+
+      //nodeValue 节点的值 可写的  可以修改  属性，注释，文本可用
+      //哪些节点有节点的值？1.文本节点2注释节点3属性节点
+      // div.firstChild.nodeValue=>"我是文本节点"
+      // div.childNodes[1].nodeValue=>"<!-- 我是注释节点 -->"
+      // div.childNodes[3].nodeValue=>null  元素节点没有nodeValue
+      //div.getAttributeNode("id").nodeValue=>"box" 获取属性节点的值  用value也可以
+      //div.getAttributeNode("id").value=>box
+
+      //nodeType  只读
+      // div.nodeType=>1
+      // div.firstChild.nodeType=>3
+      // div.childNodes[1].nodeType//8
+      // div.getAttributeNode("id").nodeType=>2
+
+      // childNodes=>children 封装方法
+      // function elemChildren(node) {
+      //   var arr = [],
+      //     children = node.childNodes;
+      //   for (var i = 0; i < children.length; i++) {
+      //     var childItem = children[i];
+      //     if (childItem.nodeType === 1) {
+      //       arr.push(childItem);
+      //     }
+      //   }
+      //   return arr;
+      // }
+      // console.log(elemChildren(div));
+
+      var arr = [1, 2, 3];
+      var obj = {
+        0: 1,
+        1: 2,
+        2: 3,
+        length: 3,
+        push: Array.prototype.push,
+        splice: Array.prototype.splice,
+      };
+      obj.push(4);
+      console.log(obj);
+
+      function elemChildren(node) {
+        var temp = {
+            length: 0,
+            push: Array.prototype.push,
+            splice: Array.prototype.splice,
+          },
+          len = node.childNodes.length;
+        for (var i = 0; i < len; i++) {
+          var childItem = node.childNodes[i];
+          if (childItem.nodeType === 1) {
+            // temp[temp["length"]] = childItem;
+            // temp["length"]++;
+            temp.push(childItem);
+          }
+        }
+        return temp;
+      }
+      console.log(elemChildren(div));
+
+      function elemParent(node, n) {
+        var type = typeof n;
+        if (type === "undefined") {
+          return node.parentNode;
+        } else if (n <= 0 || type !== "number") {
+          return undefined;
+        }
+        while (n) {
+          node = node.parentNode;
+          n--;
+        }
+        return;
+      }
+    </script>
+  </body>
+</html>

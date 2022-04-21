@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        outline: none;
+      }
+      .loading {
+        background-color: #ddd;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+
+    <script>
+      //点击谁谁就把它的序号打印出来
+      var oLi = document.getElementsByTagName("li"),
+        len = oLi.length,
+        item;
+      for (var i = 0; i < len; i++) {
+        (function (i) {
+          item = oLi[i];
+          item.addEventListener("click", function () {
+            console.log(i);
+          });
+        })(i);
+      }
+    </script>
+  </body>
+</html>
