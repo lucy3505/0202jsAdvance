@@ -129,9 +129,9 @@ function getStyles(elem, prop) {
 function preventDefaultEvent(e) {
   var e = e || window.event;
   if (e.preventDefault) {
-    event.preventDefault();
+    e.preventDefault();
   } else {
-    event.returnValue = false;
+    e.returnValue = false;
   }
 }
 function cancelBubble(e) {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">我是一个孤独的盒子</div>
+    <script>
+      var oBoxStyle = document.getElementsByClassName("box")[0].style;
+      //回流+重绘
+      oBoxStyle.width = "200px";
+      //回流+重绘
+      oBoxStyle.height = "200px";
+      //回流+重绘
+      oBoxStyle.margin = "20px";
+      //重绘
+      oBoxStyle.backgroundColor = "green";
+      //回流+重绘
+      oBoxStyle.border = "5px solid orange";
+      //重绘
+      oBoxStyle.color = "#fff";
+      //回流+重绘
+      oBoxStyle.fontSize = "30px";
+
+      var h1 = document.createElement("h1");
+      h1.innerHTML = "我是一个孤独的标题";
+      document.body.appendChild(h1); //插到最后面不会引起box盒子，但插到box前面就会引起Box回流重绘
+      //所以尽可能不要往前面加东西
+    </script>
+  </body>
+</html>

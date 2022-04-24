@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        height: 100px;
+        width: 100px;
+        background: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+  </body>
+  <script src="./debounce.js"></script>
+  <script>
+    var box = document.getElementsByClassName("box")[0];
+    // console.log(box.onmouseover);
+    // box.onmouseover = function () {
+    //   setTimeout(function () {
+    //     console.log(11);
+    //   }, 1000);
+    // };
+    box.onmouseover = debounce(
+      function () {
+        console.log(222);
+      },
+      1000,
+      true
+    );
+  </script>
+</html>

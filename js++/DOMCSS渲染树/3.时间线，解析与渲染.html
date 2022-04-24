@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script src="./3.index.js" defer="defer"></script>
+    <script type="text/javascript">
+      //js是把整个html看成document文档
+      //1. document.write("<h1>我是一个孤独的h1</h1》"); //并不是整个文档换成了里面的文本，而是显示在了html下面
+
+      // window.onload = function () {
+      //   //
+      //   document.write("<h1>我是一个孤独的h1</h1》"); //不仅把div替换掉 ，连script标签也替换了
+      // };
+      //1.document.write()  到底怎么搞得？  CSSOM  DOM
+      // 先构建DOM CSSOM 然后RenderTree  当走到script标签的时候  才走到DOMtree  renderTree都还没出现，在DOMtree rendertree都还没去渲染的时候  你出现个document.write  那就只能往后添加
+
+      //2  时间线
+
+      // window.onload事件：是在domtree csstree rendertree构建完且渲染完且 完成资源（图片资源等,有src的资源）加载完成后，才会触发onload事件 这时候document.write就是把document里的东西都换了，但如果不是在onload里面执行就完成不了这个效果
+
+      //不要用window.onload
+
+      //时间线
+      //1.什么是时间线？浏览器开始加载页面的那一刻开始到页面加载完毕整个过程中按顺序发生的每一件事情，这就是时间线
+
+      //1.document对象->js就起作用了  DOM
+      //2. 解析文档-》从html的第一行开始，浏览器会从第一行阅读到最后一行，这个过程，传统上是不做任何事情，只是在阅读  阅读的同时，涉及到dom的，它会构建DOMtree，同时，如果有link开新线程-》异步加载css外部文件 style-》异步构建cssOM
+      //document.readyState="loading"  加载中
+
+      //所以：cssTree和domTree是同时在构建的
+
+      //4.如果没有设置异步加载的script,阻塞文档解析，所有你在构建的domtree和csstree都要停止
+      //等待js脚本加载并且执行完成后，继续解析文档
+      //5.异步加载script,异步加载js脚本并且执行，不阻塞解析文档 （异步方式有：async,defer,动态创建script标签）
+      //（异步脚本里不能使用document.write()  会报错）
+      //就想在异步里能不能做 -> window.onload
+      //defer是加载完且文档解析完才执行，async是加载完就执行
+
+      //6.解析文档遇到img, 先解析这个节点，src="" 创建加载线程  异步加载图片资源，不阻塞解析文档
+      //7.文档解析完成   document.readyState="interactive"
+      //解析完成
+      //8.文档解析完成：defer script js文本开始按照顺序执行
+      //9.文档解析完成 ：触发DOMContentLoaded事件   整个dom树出来的  但不代表资源都加载完成
+      //程序（js）:同步的脚本执行阶段->事件驱动阶段
+      //10.async script加载并执行完毕 Img等资源加载完毕，window对象中的onload事件才触发
+      //document.readyState="complete";  加载完成
+
+      console.log(document.readyState); //只有在这里能拿到loading状态
+      document.onreadystatechange = function () {
+        //只要文档状态改变就触发  这是js引擎来做的，主动去监听的 不是用户去驱动的，不是事件驱动阶段
+        console.log(document.readyState); //interactive complete  一开始应该是interactive 因为一开始是loading 只有改变状态了才会触发  所以第一个值是interactive
+      };
+
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          console.log("DOMContentLoaded"); //打印出来发现是在interactive后面  说明DOMContentLoaded是在文档解析完成后触发 不是页面加载完成后触发
+        },
+        false
+      );
+
+      //window.onload  和 DOMContentLoaded的区别？
+      // onload是文档加载完成时触发（包括异步加载的js资源 src的资源） 另一个是文档解析完成触发
+      //不用window.onload因为会浪费时间
+    </script>
+  </body>
+</html>

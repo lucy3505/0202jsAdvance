@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      // var oDiv = document.getElementsByTagName("div")[0],
+      //   width = 200,
+      //   height = 200,
+      //   backgroundColor = "green",
+      //   border = "5px solid orange";
+      // oDiv.onmouseover = function () {
+      //   this.style.cssText =
+      //     "\width: " +
+      //     width +
+      //     "px;\background-color: " +
+      //     backgroundColor +
+      //     ";\border: " +
+      //     border +
+      //     ";\
+      // ";
+      // };
+
+      // var oFragment = document.createDocumentFragment();
+
+      // for (var i = 0; i < 10; i++) {
+      //   var oDiv = document.createElement("div");
+      //   oDiv.className = "box";
+      //   oFragment.appendChild(oDiv);
+      // }
+
+      // document.body.appendChild(oFragment);
+
+      //display none
+      // var oBox = document.getElementsByClassName("box")[0],
+      //   oBoxStyle = oBox.style;
+      // oBox.onmouseover = function () {
+      //   oBoxStyle.display = "none"; //当下面有足够多的样式的时候  可以用display:none  这样下面的每次样式就不会引起多次回流  display none不会再renderTree上面  所以可以这样处理
+
+      //   oBoxStyle.width = "200px";
+      //   oBoxStyle.height = "200px";
+      //   oBoxStyle.backgroundColor = "green";
+      //   oBoxStyle.border = "5px solid orange";
+      //   oBoxStyle.display = "block";
+      // };
+
+      //offset client scroll width height getComputedStyle currentStyle
+      div.style.left = oLeft + 10 + "px"; //!千万不要这样写  这样相当耗费性能能
+
+      //要先进行缓存
+      var oLeft = div.offsetLeft; //div.offsetLeft 这个没做一次都要进行回流  但是进行一次缓存后后面每次用都不会回流
+      //但如果是要动态的offsetLeft  那就只能每次都回流，那就用getStyle()  这个性能比.offsetLeft性能要好
+
+      //动画  元素  一定  绝对定位
+    </script>
+  </body>
+</html>

@@ -25,7 +25,7 @@ var dragNclick = function (elem, elemClick) {
       addEvent(document, "mouseup", mouseup);
       console.log(getViewportSize());
       function mousemove(e) {
-        var e = e || event;
+        var e = e || window.event;
 
         if (e.clientX < x) {
           elem.style.left = 0;
