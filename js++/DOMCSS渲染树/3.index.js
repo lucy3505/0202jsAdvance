@@ -38,6 +38,7 @@ var test = (function () {
 // 上面三种都是一个意思：文档解析完毕  就是DOMContentLoaded
 //DOMContentLoaded有兼容性问题 ie8以下不能用  可使用onreadystatechange做兼容
 
+
 function domReady(fn) {
   if (this.addEventListener) {
     this.addEventListener(

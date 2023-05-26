@@ -43,7 +43,7 @@ var initTodoList = (function () {
     }
     if (isEdit) {
       var itemContent = elemChildren(oItems[curIdx])[0];
-      itemContent.innerText=
+      // itemContent.innerText=
     } else {
       var oLi = document.createElement("li");
       oLi.className = "item";

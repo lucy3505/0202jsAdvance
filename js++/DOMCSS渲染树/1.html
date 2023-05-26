@@ -33,6 +33,11 @@
       h1.innerHTML = "我是一个孤独的标题";
       document.body.appendChild(h1); //插到最后面不会引起box盒子，但插到box前面就会引起Box回流重绘
       //所以尽可能不要往前面加东西
+      document.write("<h1>我是一个孤独的h1</h1>")
+         window.onload = function () {
+        //
+        document.write("<h1>我是一个孤独的h1</h1》"); //不仅把div替换掉 ，连script标签也替换了
+      };
     </script>
   </body>
 </html>

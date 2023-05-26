@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="openAlert()">打开alert</button>
+    <button onclick="openConfirm()">打开confirm</button>
+    <button onclick="openPrompt()">打开prompt</button>
+
+    <script>
+        function openAlert(){
+            window.alert("你吃饭了吗")
+        }
+        function openConfirm(){
+            var c=window.confirm("您是女性吗")//会返回Boolean值，是就返回true，取消就返回false
+            document.write("c"?"我是一名女性":"我是一名男性")
+        }
+        function openPrompt(){
+            var num1=Number(window.prompt("请填写第一个数字")),num2=Number(window.prompt(" 请填写第二个数字"))
+            console.log(num1+num2)
+
+        }
+    </script>
+</body>
+</html>

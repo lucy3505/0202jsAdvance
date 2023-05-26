@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .box {
+        height: 200px;
+        width: 200px;
+        background-color: red;
+        display: inline-block;
+        position: relative;
+        left: 0px;
+      }
+      span {
+        display: inline-block;
+        height: 200px;
+        width: 1px;
+        margin-left: 500px;
+        height: 200px;
+        background-color: #000;
+      }
+      button {
+        margin-top: 200px;
+        display: block;
+      }
+      .wrapper {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="box"></div>
+      <span></span>
+    </div>
+
+    <button>button</button>
+    <script>
+      var oDiv = document.getElementsByClassName("box")[0],
+        oBtn = document.getElementsByTagName("button")[0],
+        timer;
+
+      oBtn.onclick = function () {
+        startMove(oDiv, 500);
+      };
+
+      //加速减速
+
+      function startMove(dom, target) {
+        var speed;
+
+        clearInterval(timer);
+        timer = setInterval(function () {
+          speed = (target - dom.offsetLeft) / 7;
+          speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+          console.log(speed);
+
+          if (oDiv.offsetLeft === target) {
+            clearInterval(timer);
+          } else {
+            dom.style.left = dom.offsetLeft + speed + "px";
+          }
+        }, 30);
+      }
+
+      //匀速情况下：
+
+      //   function startMove(dom, target) {
+      //     var speed = target - dom.offsetLeft > 0 ? 7 : -7;
+
+      //     clearInterval(timer);
+      //     timer = setInterval(function () {
+      //       if (Math.abs(target - dom.offsetLeft) < Math.abs(speed)) {
+      //         clearInterval(timer);
+      //         dom.style.left = target + "px";
+      //       } else {
+      //         dom.style.left = dom.offsetLeft + speed + "px";
+      //       }
+      //     }, 30);
+      //   }
+    </script>
+  </body>
+</html>
